@@ -31,3 +31,13 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+class Chapter(models.Model):
+    book = models.ForeignKey('Product', null=True, blank=True, on_delete=models.SET_NULL)
+    chapter = models.CharField(max_length=254)
+    name = models.CharField(max_length=254, null=True, blank=True)
+    translator = models.CharField(max_length=254, null=True, blank=True)
+    context = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return self.chapter
