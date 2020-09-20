@@ -3,6 +3,8 @@ from django.contrib import messages
 from django.db.models import Q
 from .models import Product, Category, Chapter
 from django.db.models.functions import Lower
+from django.core.paginator import Paginator
+
 
 # Create your views here.
 
@@ -46,8 +48,12 @@ def all_products(request):
 
     current_sorting = f'{sort}_{direction}'
 
+    paginator = Paginator(products, 100)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     context = {
-        'products': products,
+        'products': page_obj,
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
