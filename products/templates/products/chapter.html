@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="overlay"></div>
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-10 col-md-10 col-lg-8">
+            <div class="product-details-container mb-5 mt-md-5">
+                <h1 class="mb-0">{{ product.name }}</h1>
+                <h2 class="mb-0">{{ chapter.chapter }} {{ chapter.name }}</h2>
+                <h4 class="mb-0">Author: {{ product.author }}</h4>
+                <h5 class="mb-0">Translator: {{ chapter.translator }}</h5>
+                <div>
+                    <p class="mb-0">{{ chapter.context }}</p>
+                </div>
+
+                <a href="#" class="badge badge-primary">Previous Chapter</a>
+                <a href="{% url 'product_detail' product.id %}" class="badge badge-primary">Menu</a>
+                <a href="#" class="badge badge-primary">Next Chapter</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
