@@ -57,8 +57,12 @@ body {
     font-size: 2.5em;
 }
 
-.text-black {
+.text-blue {
     color: #000 !important;
+}
+
+.bg-pl-blue {
+    background-color: #5ff!important;
 }
 
 .border-black {
