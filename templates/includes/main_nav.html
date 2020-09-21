@@ -5,11 +5,11 @@
                 All Titles
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="" class="dropdown-item">By Price</a>
-                <a href="" class="dropdown-item">By Rating</a>
-                <a href="" class="dropdown-item">By Category</a>
-                <a href="" class="dropdown-item">By Author</a>
-                <a href="" class="dropdown-item">All Products</a>
+                <a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
+                <a href="{% url 'products' %}?sort=rating&direction=desc" class="dropdown-item">By Rating</a>
+                <a href="{% url 'products' %}?sort=category&direction=asc" class="dropdown-item">By Category</a>
+                <a href="{% url 'products' %}?sort=author&direction=asc" class="dropdown-item">By Author</a>
+                <a href="{% url 'products' %}" class="dropdown-item">All Titles</a>
             </div>
         </li>
 
@@ -17,14 +17,13 @@
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="clothing-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Novels
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
-                <a href="" class="dropdown-item">Gothic</a>
-                <a href="" class="dropdown-item">Fantasy</a>
-                <a href="" class="dropdown-item">Sci-Fi</a>
-                <a href="" class="dropdown-item">Romance</a>
-                <a href="" class="dropdown-item">Urban</a>
-                <a href="" class="dropdown-item">Teen</a>
-                <a href="" class="dropdown-item">All Novels</a>
+            <div class="dropdown-menu border-0" aria-labelledby="novels-link">
+                <a href="{% url 'products' %}?category=Gothic" class="dropdown-item">Gothic</a>
+                <a href="{% url 'products' %}?category=Science-Fiction-Fantasy-Horror" class="dropdown-item">Fantasy</a>
+                <a href="{% url 'products' %}?category=Romance" class="dropdown-item">Romance</a>
+                <a href="{% url 'products' %}?category=Crime-Thriller" class="dropdown-item">Crime Thriller</a>
+                <a href="{% url 'products' %}?category=Teen-Young-Adult" class="dropdown-item">Teen</a>
+                <a href="{% url 'products' %}?category=Gothic,Science-Fiction-Fantasy-Horror,Romance,Crime-Thriller,Teen-Young-Adult" class="dropdown-item">All Novels</a>
             </div>
         </li>
 
@@ -32,22 +31,23 @@
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="homeware-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Comics
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="homeware-link">
-                <a href="" class="dropdown-item">Manga</a>
-                <a href="" class="dropdown-item">Other</a>
-                <a href="" class="dropdown-item">All Comics</a>
+            <div class="dropdown-menu border-0" aria-labelledby="comics-link">
+                <a href="{% url 'products' %}?category=Graphic-Novels-Anime-Manga" class="dropdown-item">Manga</a>
+                <a href="{% url 'products' %}?category=Graphic-Novels-Anime-Manga" class="dropdown-item">Graphic Novels</a>
+                <a href="{% url 'products' %}?category=Graphic-Novels-Anime-Manga" class="dropdown-item">All Comics</a>
             </div>
         </li>
 
         <li class="nav-item dropdown">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="homeware-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="other-titles-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Other Titles
             </a>
-            <div class="dropdown-menu border-0" aria-labelledby="homeware-link">
-                <a href="" class="dropdown-item">History</a>
-                <a href="" class="dropdown-item">Drama</a>
-                <a href="" class="dropdown-item">Other</a>
-                <a href="" class="dropdown-item">All Others</a>
+            <div class="dropdown-menu border-0" aria-labelledby="other-titles-link">
+                <a href="{% url 'products' %}?category=Poetry-Drama" class="dropdown-item">Poetry&Drama</a>
+                <a href="{% url 'products' %}?category=History-Archaeology" class="dropdown-item">History</a>
+                <a href="{% url 'products' %}?category=Humour" class="dropdown-item">Humour</a>
+                <a href="{% url 'products' %}?category=Entertainment" class="dropdown-item">Entertainment</a>
+                <a href="{% url 'products' %}?category=Poetry-Drama,History-Archaeology,Humour,Entertainment" class="dropdown-item">All Others</a>
             </div>
         </li>
 
@@ -56,10 +56,9 @@
                 Special Offers
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="specials-link">
-                <a href="" class="dropdown-item">New Arrivals</a>
-                <a href="" class="dropdown-item">Deals</a>
-                <a href="" class="dropdown-item">Clearance</a>
-                <a href="" class="dropdown-item">All Specials</a>
+                <a href="{% url 'products' %}?category=new_arrivals" class="dropdown-item">New Arrivals</a>
+                <a href="{% url 'products' %}?category=deals" class="dropdown-item">Deals</a>
+                <a href="{% url 'products' %}?category=deals,new_arrivals" class="dropdown-item">All Specials</a>
             </div>
         </li>
     </ul>
