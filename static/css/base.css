@@ -129,5 +129,12 @@ body {
     }
     .font-tea {
         font-size: 2.5em;
+        padding-top: 2em;
+    }
+
+
+    .read-now-button {
+    margin-left: 2em;
+    margin-top: 7em;
     }
 }
