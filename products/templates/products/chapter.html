@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'chapters/css/chapter.css' %}">
+{% endblock %}
+
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
@@ -21,7 +26,7 @@
                 <h4 class="mb-0">Author: {{ product.author }}</h4>
                 <h5 class="mb-0">Translator: {{ chapter.translator }}</h5>
                 <div>
-                    <p class="mb-0">{{ chapter.context }}</p>
+                    <p class="mb-0 chpcontext">{{ chapter.context }}</p>
                 </div>
 
                 <a href="#" class="badge badge-primary">Previous Chapter</a>

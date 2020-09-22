@@ -22,7 +22,14 @@ body {
 
 .logo-font {
     text-transform: uppercase;
+}
 
+.font-tea {
+    color: #D8FDDA;
+}
+
+.font-banner {
+    color: #D8FDDA;
 }
 
 /* logo only takes up as much space as text needs */
@@ -38,6 +45,13 @@ body {
 
 .btn-black {
     background: black;
+    color: white;
+}
+
+.read-now-button:hover,
+.read-now-button:active,
+.read-now-button:focus {
+    background: #110DD3;
     color: white;
 }
 
@@ -57,13 +71,14 @@ body {
     font-size: 2.5em;
 }
 
-.text-blue {
+.text-black {
     color: #000 !important;
 }
 
 .bg-pl-blue {
-    background-color: #5ff!important;
+    background-color: #D8FDDA!important;
 }
+
 
 .border-black {
     border: 1px solid black !important;
@@ -75,7 +90,7 @@ body {
     top: 0;
     left: 0%;
     position: fixed;
-    background: white;
+    background: #1ec32b;
     z-index: -1;
 }
 
@@ -109,3 +124,10 @@ body {
     .header-container {
         padding-top: 116px;
     }
+    .text-black {
+        font-size: 12px;
+    }
+    .font-tea {
+        font-size: 2.5em;
+    }
+}
