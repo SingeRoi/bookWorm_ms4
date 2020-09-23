@@ -61,20 +61,20 @@
                         {% if forloop.first %}
                             <div class="row">
                                 <a class="" href="{% url 'chapter' product.id chapter.id %}">
-                                    <span class="p-2 mt-2 badge badge-white text-black rounded-0 border border-dark">{{ chapter.chapter }} {{ chapter.name }}</span>
+                                    <span class="p-2 mt-2 badge badge-white text-black rounded-5 border border-dark">{{ chapter.chapter }} {{ chapter.name }}</span>
                                 </a>
                             </div>
                         {% else %}
                             {% if request.user.is_authenticated %}
                                 <div class="row">
                                     <a class="" href="{% url 'chapter' product.id chapter.id %}">
-                                        <span class="p-2 mt-2 badge badge-white text-black rounded-0 border border-dark">{{ chapter.chapter }} {{ chapter.name }}</span>
+                                        <span class="p-2 mt-2 badge badge-white text-black rounded-5 border border-dark">{{ chapter.chapter }} {{ chapter.name }}</span>
                                     </a>
                                 </div>
                             {% else %}
                                 <div class="row">
                                     <a data-toggle="modal" href="#myModal">
-                                        <span class="p-2 mt-2 badge badge-white text-black rounded-0 border border-dark">{{ chapter.chapter }} {{ chapter.name }}</span>
+                                        <span class="p-2 mt-2 badge badge-white text-black rounded-5 border border-dark">{{ chapter.chapter }} {{ chapter.name }}</span>
                                     </a>
                                 </div>
 

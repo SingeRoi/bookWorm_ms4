@@ -11,8 +11,8 @@ class ProductAdmin(admin.ModelAdmin):
         'category',
         'price',
         'rating',
-        'author'
-        'isbn'
+        'author',
+        'isbn',
         'image',
     )
 
@@ -24,7 +24,19 @@ class CategoryAdmin(admin.ModelAdmin):
         'name',
     )
 
+class ChapterAdmin(admin.ModelAdmin):
+    list_display = (
+        'sku',
+        'name',
+        'price',
+        'translator',
+        'author',
+        'book',
+        'chapter',
+        'context',
+    )
 
-admin.site.register(Product)
-admin.site.register(Category)
-admin.site.register(Chapter)
+
+admin.site.register(Product, ProductAdmin)
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(Chapter, ChapterAdmin)
