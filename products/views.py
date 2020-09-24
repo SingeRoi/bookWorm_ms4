@@ -4,7 +4,7 @@ from django.db.models import Q
 from .models import Product, Category, Chapter
 from django.db.models.functions import Lower
 from django.core.paginator import Paginator
-
+from .forms import ProductForm
 
 # Create your views here.
 
@@ -86,3 +86,14 @@ def chapter(request, product_id, chapter_id):
     }
 
     return render(request, 'products/chapter.html', context)
+
+def add_product(request):
+    """Add a product to the store"""
+    form = ProductForm()
+    template = 'products/add_product.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
+

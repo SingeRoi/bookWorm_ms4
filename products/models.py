@@ -43,4 +43,4 @@ class Chapter(models.Model):
     context = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return self.chapter
+        return self.sku

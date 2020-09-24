@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'products',
     # 'bag',
     'profiles',
+    'bookCoins',
 
     # Other
     'crispy_forms',
@@ -79,6 +80,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'profiles.contexts.profile_contents',
 
             ],
             'builtins': [
