@@ -30,6 +30,7 @@ body {
 
 .font-banner {
     color: #D8FDDA;
+    font-size: 18px;
 }
 
 /* logo only takes up as much space as text needs */
@@ -84,7 +85,6 @@ body {
     background-color: #D8FDDA!important;
 }
 
-
 .border-black {
     border: 1px solid black !important;
 }
@@ -99,6 +99,7 @@ body {
     z-index: -1;
 }
 
+/* styling for product page*/
 .product-category-sort-row {
     display: flex;
     flex-direction: row;
@@ -123,11 +124,32 @@ body {
 .col-category-badge {
     left: 3.7%;
 }
+
+.btn-info {
+    background-color: transparent;
+}
+
+/* Styling for product detail*/
+.chapter-badges {
+    margin-left: 15px;
+}
+
+/*Chapter display styling*/
+.chapter-text-bg {
+    background-color: #f0f0f0;
+}
+
+.book-title-chapter-h1 {
+    color: #00f;
+}
+
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
-  .container {
+  .container,
+  .container-text {
     max-width: 80%;
   }
 }
@@ -146,12 +168,15 @@ body {
         padding-top: 164px;
     }
 
+    .font-banner {
+    font-size: 24px;
+    }
 }
 
 /* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
     .header-container {
-        padding-top: 116px;
+        padding-top: 76px;
     }
     .text-black {
         font-size: 12px;
@@ -162,8 +187,12 @@ body {
     }
 
     .read-now-button {
-    margin-left: 2em;
-    margin-top: 7em;
+        margin-left: 2em;
+        margin-top: 7em;
+    }
+
+    .search-result-col {
+        margin-left: 1em;
     }
 
     .container-product-titles {
@@ -173,7 +202,8 @@ body {
         justify-content: center;
     }
 
-    .product-titles {
+    .product-titles,
+    .product-title-line {
         display: none;
     }
 

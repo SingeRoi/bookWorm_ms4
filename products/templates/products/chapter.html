@@ -16,19 +16,28 @@
 
 {% block content %}
 <div class="overlay"></div>
-<div class="container-fluid">
+<div class="container-text container-fluid">
     <div class="row">
 
-        <div class="col-10 col-md-10 col-lg-8">
+        <div class="chapter-text-bg col-10 offset-1 col-md-10 col-lg-8 mx-auto">
             <div class="product-details-container mb-5 mt-md-5">
-                <h1 class="mb-0">{{ product.name }}</h1>
-                <h2 class="mb-0">{{ chapter.chapter }} {{ chapter.name }}</h2>
+                <h1 class="book-title-chapter-h1 mb-0">{{ product.name }}</h1>
+                {% if chapter.chapter == chapter.name %}
+                    <h3 class="mb-0">{{ chapter.chapter }}</h3>
+                {% else %}
+                    <h3 class="mb-0">{{ chapter.chapter }} {{ chapter.name }}</h3>
+                {% endif %}
                 <h4 class="mb-0">Author: {{ product.author }}</h4>
                 <h5 class="mb-0">Translator: {{ chapter.translator }}</h5>
+                    <div>
+                        <hr class="chapter-hr w-50 mb-1">
+                    </div>
                 <div>
                     <p class="mb-0 chpcontext">{{ chapter.context }}</p>
                 </div>
-
+                <div>
+                    <hr class="chapter-hr w-50 mb-1">
+                </div>
                 <a href="#" class="badge badge-primary">Previous Chapter</a>
                 <a href="{% url 'product_detail' product.id %}" class="badge badge-primary">Menu</a>
                 <a href="#" class="badge badge-primary">Next Chapter</a>
