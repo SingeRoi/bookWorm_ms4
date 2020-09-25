@@ -248,4 +248,10 @@ body {
         left: 0;
         padding-left: 0;
     }
+
+    /* logout para text reduced */
+    .logout-p {
+        font-size: 1.5em;
+    }
+
 }

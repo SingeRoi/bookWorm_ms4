@@ -6,12 +6,12 @@
 
 {% block content %}
 
-<div class="col col-3 float-right logout-message">
+<div class="col col-10 offset-1 logout-message">
   <hr>
   <h2 class="logo-font font-tea mb-4">{% trans "Sign Out" %}</h2>
   <hr>
 
-  <p class="font-tea">{% trans 'Are you sure you want to sign out?' %}</p>
+  <p class="font-tea logout-p ">{% trans 'Are you sure you want to sign out?' %}</p>
 
   <form method="post" action="{% url 'account_logout' %}">
     {% csrf_token %}
