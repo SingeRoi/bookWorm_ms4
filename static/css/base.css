@@ -95,7 +95,7 @@ body {
     top: 0;
     left: 0%;
     position: fixed;
-    background: #1ec32b;
+    background: rgba(30, 195, 43, 0.9);
     z-index: -1;
 }
 
