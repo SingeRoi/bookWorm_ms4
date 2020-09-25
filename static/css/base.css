@@ -99,6 +99,10 @@ body {
     z-index: -1;
 }
 
+.text-muted {
+    color: #694F5D !important;
+}
+
 /* styling for product page*/
 .product-category-sort-row {
     display: flex;
@@ -143,6 +147,10 @@ body {
     color: #00f;
 }
 
+/* Styling for profile page*/
+.btn-profile {
+    min-width: 12em;
+}
 
 /* -------------------------------- Media Queries */
 
