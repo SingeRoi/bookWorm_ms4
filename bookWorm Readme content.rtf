@@ -122,7 +122,8 @@ I used [Font Awesome]({{\field{\*\fldinst{HYPERLINK https://fontawesome.com/icon
 - use pagination to move through the purchased publications\par
 - manage my purchases, subscriptions, payments\par
 - \par
-\par
+### Comments on coding required\par
+\tab found scrolling was not working \par
 ### Features left to implement\par
 \par
 *\par
@@ -169,10 +170,39 @@ Further details on all Python packages used on this project can be found in the 
 \par
 ### Other resources\par
 \par
-[Gifox]({{\field{\*\fldinst{HYPERLINK https://gifox.io/ }}{\fldrslt{https://gifox.io/\ul0\cf0}}}}\f0\fs22 ) - I used Gifox to record the website demo for my README file. I recorded it off the website [Am I Responsive]({{\field{\*\fldinst{HYPERLINK http://ami.responsivedesign.is/?url=https%3A%2F%2Fmelbiggs.github.io%2Fifd-milestoneproject%2F# }}{\fldrslt{http://ami.responsivedesign.is/?url=https%3A%2F%2Fmelbiggs.github.io%2Fifd-milestoneproject%2F#\ul0\cf0}}}}\f0\fs22 )\par
+[Gifox]({{\field{\*\fldinst{HYPERLINK https://gifox.io/ }}{\fldrslt{https://gifox.io/\ul0\cf0}}}}\f0\fs22 ) - I used Gifox to record the website demo for my README file. I recorded it off the website [Am I Responsive](ect%2F#)\fs24\lang1036 http://ami.responsivedesign.is/?url=https]\fs22\lang12\par
 \par
 \par
 ## Testing\par
+###User story testing  \par
+ - a user can enter site without registration\par
+- can search for a title by genre, rating, price or deal (inc free)\par
+- or can search for a specific product by name, author\par
+- can see product details and can select to view free content\par
+- user is presented with clear information on how to purchase product\par
+\tab - need to login/register \par
+\tab - how to purchase bookCoins\par
+\tab - how to add chapters to bookBag\par
+- user can register\par
+\tab - receive email  to confirm\par
+\tab - can confirm registration\par
+\tab - \par
+can login\par
+\tab - can access profile\par
+\tab - becomes authorised to see additional chapters\par
+\tab - can purchase bookCoins and paid for chapters\par
+-  can request password reset\par
+\tab - can reset password\par
+\tab\par
+\tab\par
+\tab\tab\par
+### Admin user testing\par
+- can user login as a superuser\par
+- can a user add a product\par
+\tab - can form respond to invalid input with an alert\par
+\tab -  can see valid input updates title records\par
+- can a user modify a product\par
+- can a user delete a product\par
 \par
 ### Validators\par
 \par
@@ -200,15 +230,11 @@ Further details on all Python packages used on this project can be found in the 
 \par
 The \par
 \par
- is used is from [Favicon.io]({{\field{\*\fldinst{HYPERLINK https://favicon.io/ }}{\fldrslt{https://favicon.io/\ul0\cf0}}}}\f0\fs22 )\par
+Inspiration for the bookWorm logo came from font choices at [Favicon.io](https://favicon.io/)\par
+I found the book dataset with images and ratings at [kaggle.com]() these were manually filtered to exclude some categories, the csv file was then formatted to JSON using  a snippet found (here](); the [gothic novel]() dataset was manually formatted to...\par
+Various eNovel sites were consulted for inspiration including:\par
 \par
-The index page carousel images were found at [Goop]({{\field{\*\fldinst{HYPERLINK https://goop.com/wp-content/uploads/2011/04/Update-Natural-and-Organic-Skin-CareSEO-AP1104952.jpg }}{\fldrslt{https://goop.com/wp-content/uploads/2011/04/Update-Natural-and-Organic-Skin-CareSEO-AP1104952.jpg\ul0\cf0}}}}\f0\fs22 ) and [Pinterest]({{\field{\*\fldinst{HYPERLINK https://www.pinterest.co.uk/pin/717972365568820262/ }}{\fldrslt{https://www.pinterest.co.uk/pin/717972365568820262/\ul0\cf0}}}}\f0\fs22 ) and edited by myself. \par
-\par
-I found the product images on [Cult Beauty]({{\field{\*\fldinst{HYPERLINK https://www.cultbeauty.co.uk/ }}{\fldrslt{https://www.cultbeauty.co.uk/\ul0\cf0}}}}\f0\fs22 ) or on the products individual brand website, along with the product descriptions. \par
-\par
-Various eNovel sites were consulted for inspiration...\par
-\par
-images were from Pexels\par
+The base image is from [Pexels]()\par
 \par
 ### Code\par
 *Product page pagination uses the code for page view pagination from\par
