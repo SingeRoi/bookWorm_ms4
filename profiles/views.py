@@ -13,12 +13,14 @@ def profile(request):
     """ Display the user's profile. """
     profile = get_object_or_404(UserProfile, user=request.user)
     orders = profile.coin_orders.all()
+    chapterOrders = profile.chapter_orders.all()
     context = {
         'orders': orders,
+        'chapterOrders': chapterOrders,
         'profile': profile,
         'on_profile_page': True
     }
-    '''do i need an if statement from profiels view.py?
+    '''do i need an if statement from profiles view.py?
         if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
@@ -62,6 +64,7 @@ def update_billing(request):
 
     return render(request, 'profiles/update_billing.html', context)
 
+@login_required
 def order_history(request, order_number):
     orderCoin = get_object_or_404(OrderCoin, order_number=order_number)
 

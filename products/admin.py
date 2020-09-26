@@ -33,7 +33,6 @@ class ChapterAdmin(admin.ModelAdmin):
         'author',
         'book',
         'chapter',
-        'context',
     )
 
 
