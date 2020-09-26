@@ -39,7 +39,7 @@
     </div>
     <div class="row">
         <div class="col-12 col-lg-6">
-            <p class="text-muted">Order History</p>
+            <p class="text-muted">Order Coin History</p>
             <div class="order-history table-responsive">
                 <table class="table table-sm table-borderless">
                     <thead>
@@ -86,7 +86,38 @@
         </div>
     </div>
     <div class="row">
-        <p class="text-muted">Your Bookshelf</p>
+        <div class="col-12 col-lg-6">
+            <p class="text-muted">Your Bookshelf</p>
+            <div class="order-history table-responsive">
+                <table class="table table-sm table-borderless">
+                    <thead>
+                    <tr>
+                        <th>Order Number</th>
+                        <th>Date</th>
+                        <th>Chapter</th>
+                        <th>Book</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for corder in chapterOrders %}
+                    <tr>
+                        <td>
+                            <a href="">
+                                {{ corder.order_number|truncatechars:6 }}
+                            </a>
+                        </td>
+                        <td>{{ corder.date }}</td>
+
+                        {% for item in corder.lineitems.all %}
+                        <td>{{ item.chapter_no }}</td>
+                        <td>{{ item.book }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
     </div>
     {% endblock %}

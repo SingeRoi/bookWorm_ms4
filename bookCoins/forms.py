@@ -38,3 +38,21 @@ class OrderCoinForm(forms.ModelForm):
                 self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             self.fields[field].label = False
+
+
+class OrderChapterForm(forms.ModelForm):
+    class Meta:
+        model = OrderChapter
+        exclude = ('order_number', 'user_profile', 'grand_total', 'date')
+        """fields = ('full_name', 'email', 'phone_number',
+                  'street_address1', 'street_address2',
+                  'town_or_city', 'postcode', 'country',
+                  'county', 'coins')
+        """
+
+    def __init__(self, *args, **kwargs):
+        """
+        Add placeholders and classes, remove auto-generated
+        labels and set autofocus on first field
+        """
+        super().__init__(*args, **kwargs)

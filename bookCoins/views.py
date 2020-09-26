@@ -3,10 +3,10 @@ from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 
-from .forms import OrderCoinForm
-from .models import OrderCoin
+from .forms import OrderCoinForm, OrderChapterForm
+from .models import OrderCoin, OrderChapter, OrderChapterLineItem
 
-from products.models import Product
+from products.models import Product, Chapter
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 
@@ -36,7 +36,7 @@ def topup_coins(request):
     #stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     if request.method == 'POST':
-       # bag = request.session.get('bag', {})
+        # bag = request.session.get('bag', {})
 
         form_data = {
             'full_name': request.POST['full_name'],
@@ -147,7 +147,6 @@ def topup_success(request, order_number):
     Handle successful checkouts
     """
     save_info = request.session.get('save_info')
-    print(save_info)
     order = get_object_or_404(OrderCoin, order_number=order_number)
 
     if request.user.is_authenticated:
@@ -173,7 +172,7 @@ def topup_success(request, order_number):
                 'default_street_address1': order.street_address1,
                 'default_street_address2': order.street_address2,
                 'default_county': order.county,
-                'bookcoins': order.coins + profile.bookcoins,
+                'bookcoins': profile.bookcoins,
             }
             user_profile_form = UserProfileForm(profile_data, instance=profile)
             if user_profile_form.is_valid():
@@ -191,3 +190,65 @@ def topup_success(request, order_number):
     }
 
     return render(request, 'bookCoins/topup_success.html', context)
+
+
+def buy_chapter(request, product_id, chapter_id):
+    """
+    Buy chapters
+    """
+
+    if request.method == 'POST':
+
+        """order_chapter_form_data = {
+            'full_name': request.POST['full_name'],
+            'email': request.POST['email'],
+            'phone_number': request.POST['phone_number'],
+            'country': request.POST['country'],
+            'postcode': request.POST['postcode'],
+            'town_or_city': request.POST['town_or_city'],
+            'street_address1': request.POST['street_address1'],
+            'street_address2': request.POST['street_address2'],
+            'county': request.POST['county'],
+            'coins': request.POST['coins'],
+        }
+        """
+
+        chapter = get_object_or_404(Chapter, pk=chapter_id)
+        order_chapter_form = OrderChapterForm()
+        if order_chapter_form.is_valid():
+            order = order_chapter_form.save()
+            order_line_item = OrderChapterLineItem(
+                order=order,
+                chapter=chapter.sku,
+                chapter_no=chapter.chapter,
+                book= chapter.book,
+                lineitem_total=chapter.price
+            )
+            order_line_item.save()
+
+        profile = UserProfile.objects.get(user=request.user)
+        # Attach the user's profile to the order
+        order.user_profile = profile
+        order.save()
+
+        # Save the user's coins
+        coin_data = {
+            'bookcoins': profile.bookcoins - chapter.price,
+        }
+        user_coin_form = UserProfileForm(coin_data, instance=profile)
+        if user_coin_form.is_valid():
+            user_coin_form.save()
+
+    """messages.success(request, f'Order successfully processed! \
+        Your order number is {order_number}. A confirmation \
+        email will be sent to {order.email}.')
+    """
+    product = get_object_or_404(Product, pk=product_id)
+    chapters = Chapter.objects.filter(book=product_id)
+
+    context = {
+        'product': product,
+        'chapters':chapters,
+    }
+
+    return render(request, 'bookCoins/product_detail.html', context)

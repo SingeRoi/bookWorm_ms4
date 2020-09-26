@@ -5,15 +5,17 @@ from .models import UserProfile
 
 def profile_contents(request):
     """ Display the user's profile. """
+    chapterOrders=[]
     if request.user.is_anonymous:
         is_author = False
     else:
         profile = get_object_or_404(UserProfile, user=request.user)
         is_author = profile.is_author
+        chapterOrders = profile.chapter_orders.all()
 
     context = {
         #'form': form,
-        # 'orders': orders,
+        'chapterOrders': chapterOrders,
         'is_author': is_author,
         'on_profile_page': False
     }

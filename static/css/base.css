@@ -138,6 +138,16 @@ body {
     margin-left: 15px;
 }
 
+.badge {
+    width-min: 120%;
+}
+
+.badge-blue {
+    color: #00f !important;
+    border-color: #00f !important;
+}
+
+
 /*Chapter display styling*/
 .chapter-text-bg {
     background-color: #f0f0f0;

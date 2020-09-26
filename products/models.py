@@ -41,6 +41,7 @@ class Chapter(models.Model):
     translator = models.CharField(max_length=254, null=True, blank=True)
     sku = models.CharField(max_length=254, null=True, blank=True)
     context = models.TextField(null=True, blank=True)
+    modalcode = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):
         return self.sku
