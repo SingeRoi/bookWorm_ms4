@@ -82,6 +82,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'profiles.contexts.profile_contents',
 
+
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
