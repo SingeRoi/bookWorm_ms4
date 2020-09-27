@@ -8,10 +8,10 @@
 
 <div class="col col-10 offset-1 logout-message">
   <hr>
-  <h2 class="logo-font font-tea mb-4">{% trans "Sign Out" %}</h2>
+  <h2 class="logo-font font-crayola mb-4">{% trans "Sign Out" %}</h2>
   <hr>
 
-  <p class="font-tea logout-p ">{% trans 'Are you sure you want to sign out?' %}</p>
+  <p class="font-crayola logout-p ">{% trans 'Are you sure you want to sign out?' %}</p>
 
   <form method="post" action="{% url 'account_logout' %}">
     {% csrf_token %}
@@ -19,6 +19,7 @@
     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
     {% endif %}
     <button class="btn-logout" type="submit">{% trans 'Sign Out' %}</button>
+    <a class="btn btn-outline-black rounded-0" href="{% url 'home' %}">Cancel</a>
 </form>
 
 </div>

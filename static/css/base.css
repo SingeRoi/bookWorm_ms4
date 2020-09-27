@@ -172,6 +172,13 @@ body {
     top: 50px;
     right: auto;
 }
+.message-container {
+    position: fixed;
+}
+/* colours signup edit button text*/
+.font-crayola {
+    color: #FFE785 !important;
+}
 
 .btn-logout {
     margin-bottom: 1em;

@@ -143,7 +143,7 @@ def edit_product(request, product_id):
 
 @login_required
 def delete_product(request, product_id):
-    '''Delete a title from the storeonly as a superuser'''
+    '''Delete a title from the store only as a superuser'''
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only admin can do that!')
         return redirect(reverse('home'))
@@ -153,3 +153,12 @@ def delete_product(request, product_id):
     messages.success(request, 'Deleted title.')
     return redirect(reverse('products'))
 
+"""
+rating function
+@login_required
+def rate_product(request, product_id):
+    Rate a title in the store only as a purchaser or superuser
+    if not request.user.is_superuser:
+    messages.error(request, 'Sorry, only admin can do that!')
+    return redirect(reverse('home'))
+    """

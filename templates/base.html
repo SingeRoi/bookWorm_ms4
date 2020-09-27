@@ -87,7 +87,7 @@
                     </div>
                 </li>
                 <li class="list-inline-item">
-                    <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="href = "">
+                    <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
                     <div class="text-center">
                         <div><i class="fas fa-shopping-bag fa-lg"></i></div>
                         <p class="my-0">
@@ -119,13 +119,7 @@
     </div>
 </header>
 
-{% if messages %}
-<div class="message-container">
-    {% for message in messages %}
-        {% include 'includes/toasts/toast_success.html' %}
-    {% endfor %}
-</div>
-{% endif %}
+
 
 {% block page_header %}
 {% endblock %}
