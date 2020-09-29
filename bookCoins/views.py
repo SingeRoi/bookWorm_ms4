@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpR
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 
 from .forms import OrderCoinForm, OrderChapterForm
 from .models import OrderCoin, OrderChapter, OrderChapterLineItem
@@ -10,17 +12,19 @@ from products.models import Product, Chapter
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 
+from django.contrib.sessions.backends.db import SessionStore
+
 
 import json
+import stripe
 
-"""
+
 @require_POST
 def cache_checkout_data(request):
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
         stripe.PaymentIntent.modify(pid, metadata={
-            'bag': json.dumps(request.session.get('bag', {})),
             'save_info': request.POST.get('save_info'),
             'username': request.user,
         })
@@ -29,15 +33,32 @@ def cache_checkout_data(request):
         messages.error(request, 'Sorry, your payment cannot be \
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
-"""
+
+
+
+@csrf_exempt
+def update_coins(request):
+    """ Add a quantity of the specified product to the shopping bag """
+    redirect_url = request.POST.get('redirect_url')
+    current_coin = request.POST.get('current_coin')
+
+    request.session['current_coin'] = current_coin
+    request.session.modified = True
+
+    return redirect(redirect_url)
+
 
 def topup_coins(request):
-    #stripe_public_key = settings.STRIPE_PUBLIC_KEY
-    #stripe_secret_key = settings.STRIPE_SECRET_KEY
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
 
+    intent = {}
+
+
+    current_coin = int(request.session.get('current_coin', 0))
+
+    print(request.method)
     if request.method == 'POST':
-        # bag = request.session.get('bag', {})
-
         form_data = {
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
@@ -53,60 +74,18 @@ def topup_coins(request):
 
         order_form = OrderCoinForm(form_data)
         if order_form.is_valid():
+            print("form is valid")
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
             order.save()
-            """for item_id, item_data in bag.items():
-                try:
-                    product = Product.objects.get(id=item_id)
-                    if isinstance(item_data, int):
-                        order_line_item = OrderLineItem(
-                            order=order,
-                            product=product,
-                            quantity=item_data,
-                        )
-                        order_line_item.save()
-                    else:
-                        for size, quantity in item_data['items_by_size'].items():
-                            order_line_item = OrderLineItem(
-                                order=order,
-                                product=product,
-                                quantity=quantity,
-                                product_size=size,
-                            )
-                            order_line_item.save()
-                except Product.DoesNotExist:
-                    messages.error(request, (
-                        "One of the products in your bag wasn't found in our database. "
-                        "Please call us for assistance!")
-                                   )
-                    order.delete()
-                    return redirect(reverse('view_bag'))"""
-
             # Save the info to the user's profile if all is well
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('topup_success', args=[order.order_number]))
-
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
     else:
-        """bag = request.session.get('bag', {})
-        if not bag:
-            messages.error(request, "There's nothing in your bag at the moment")
-            return redirect(reverse('products'))
-
-        current_bag = bag_contents(request)
-        total = current_bag['grand_total']
-        stripe_total = round(total * 100)
-        stripe.api_key = stripe_secret_key
-        intent = stripe.PaymentIntent.create(
-            amount=stripe_total,
-            currency=settings.STRIPE_CURRENCY,
-        )
-        """
-
         # Attempt to prefill the form with any info the user maintains in their profile
         if request.user.is_authenticated:
             try:
@@ -127,15 +106,31 @@ def topup_coins(request):
         else:
             order_form = OrderCoinForm()
 
-    """if not stripe_public_key:
+    if current_coin > 0:
+        coinvalue = current_coin
+        stripe_total = round(coinvalue * 100)
+        stripe.api_key = stripe_secret_key
+        intent = stripe.PaymentIntent.create(
+            amount=stripe_total,
+            currency=settings.STRIPE_CURRENCY,
+        )
+
+    if not intent:
+        client_secret = {}
+    else:
+        client_secret = intent.client_secret
+
+    #if 'current_coin' in request.session:
+    #   del request.session['current_coin']
+
+    if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
             Did you forget to set it in your environment?')
-            """
 
     context = {
         'order_form': order_form,
-        #'stripe_public_key': stripe_public_key,
-        #'client_secret': intent.client_secret,
+        'stripe_public_key': stripe_public_key,
+        'client_secret': client_secret,
     }
 
     return render(request, 'bookCoins/topup_coins.html', context)
@@ -182,8 +177,8 @@ def topup_success(request, order_number):
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
 
-    if 'bag' in request.session:
-        del request.session['bag']
+    if 'current_coin' in request.session:
+        del request.session['current_coin']
 
     context = {
         'order': order,
@@ -192,46 +187,44 @@ def topup_success(request, order_number):
     return render(request, 'bookCoins/topup_success.html', context)
 
 
-def buy_chapter(request, product_id, chapter_id):
+
+def buy_chapter(request):
     """
     Buy chapters
     """
 
     if request.method == 'POST':
 
-        """order_chapter_form_data = {
-            'full_name': request.POST['full_name'],
-            'email': request.POST['email'],
-            'phone_number': request.POST['phone_number'],
-            'country': request.POST['country'],
-            'postcode': request.POST['postcode'],
-            'town_or_city': request.POST['town_or_city'],
-            'street_address1': request.POST['street_address1'],
-            'street_address2': request.POST['street_address2'],
-            'county': request.POST['county'],
-            'coins': request.POST['coins'],
-        }
-        """
+        chapterid = request.POST['chapterId']
+        productid = request.POST['productId']
 
-        chapter = get_object_or_404(Chapter, pk=chapter_id)
-        order_chapter_form = OrderChapterForm()
+        profile = UserProfile.objects.get(user=request.user)
+        chapter = get_object_or_404(Chapter, pk=chapterid)
+
+        order_chapter_form_data = {
+            'user_profile': profile,
+        }
+
+        order_chapter_form = OrderChapterForm(order_chapter_form_data)
         if order_chapter_form.is_valid():
             order = order_chapter_form.save()
             order_line_item = OrderChapterLineItem(
                 order=order,
-                chapter=chapter.sku,
+                chapter=chapter,
                 chapter_no=chapter.chapter,
                 book= chapter.book,
-                lineitem_total=chapter.price
+                lineitem_total=chapter.price,
             )
             order_line_item.save()
-
-        profile = UserProfile.objects.get(user=request.user)
-        # Attach the user's profile to the order
-        order.user_profile = profile
-        order.save()
+            # Attach the user's profile to the order
+            order.user_profile = profile
+            order.save()
+        else:
+            print("there's an error")
+            print(order_chapter_form.errors)
 
         # Save the user's coins
+
         coin_data = {
             'bookcoins': profile.bookcoins - chapter.price,
         }
@@ -243,12 +236,13 @@ def buy_chapter(request, product_id, chapter_id):
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
     """
-    product = get_object_or_404(Product, pk=product_id)
-    chapters = Chapter.objects.filter(book=product_id)
+    product = get_object_or_404(Product, pk=productid)
+    chapters = Chapter.objects.filter(book=productid)
 
     context = {
         'product': product,
         'chapters':chapters,
     }
 
-    return render(request, 'bookCoins/product_detail.html', context)
+    return redirect(reverse('product_detail', args=[productid]))
+

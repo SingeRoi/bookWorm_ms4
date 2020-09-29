@@ -61,7 +61,7 @@ form.addEventListener('submit', function(ev) {
         'client_secret': clientSecret,
         'save_info': saveInfo,
     };
-    var url = '/checkout/cache_checkout_data/';
+    var url = '/topup/cache_checkout_data/';
 
     $.post(url, postData).done(function () {
         stripe.confirmCardPayment(clientSecret, {
@@ -78,18 +78,6 @@ form.addEventListener('submit', function(ev) {
                         country: $.trim(form.country.value),
                         state: $.trim(form.county.value),
                     }
-                }
-            },
-            shipping: {
-                name: $.trim(form.full_name.value),
-                phone: $.trim(form.phone_number.value),
-                address: {
-                    line1: $.trim(form.street_address1.value),
-                    line2: $.trim(form.street_address2.value),
-                    city: $.trim(form.town_or_city.value),
-                    country: $.trim(form.country.value),
-                    postal_code: $.trim(form.postcode.value),
-                    state: $.trim(form.county.value),
                 }
             },
         }).then(function(result) {
@@ -116,3 +104,48 @@ form.addEventListener('submit', function(ev) {
         location.reload();
     })
 });
+
+
+function update() {
+    var one = document.getElementById('id_coins');
+    var two = document.getElementById('chargeValue');
+    //two.value = parseInt(one.value) * 2;
+    two.innerHTML = "$" + one.value;
+
+
+    var coinValue = one;
+
+    var redirect_url = document.getElementById('redirect_url');
+    var postData = {
+        'current_coin': coinValue.value,
+        'redirect_url': redirect_url.value,
+    };
+
+    var url = '/topup/update_coins';
+
+    $.post(url, postData).done(function () {
+        //alert( "success" );
+        localStorage.setItem('id_coins', coinValue.value);
+        //location.reload();
+        document.getElementById("id_coins").value =localStorage.getItem('id_coins');
+    });
+
+
+   /* $.post(url, postData, function() {
+        alert( "success" );
+    })
+        .done(function() {
+            alert( "second success" );
+        })
+        .fail(function() {
+            alert( "error" );
+        })
+        .always(function() {
+            alert( "finished" );
+        });
+*/
+
+
+    //one.value = tmpOne;
+
+}

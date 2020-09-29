@@ -154,11 +154,33 @@ def delete_product(request, product_id):
     return redirect(reverse('products'))
 
 """
-rating function
+rating function {% url 'rate_product' %}
 @login_required
-def rate_product(request, product_id):
+def rate_product(request, book):
     Rate a title in the store only as a purchaser or superuser
-    if not request.user.is_superuser:
-    messages.error(request, 'Sorry, only admin can do that!')
-    return redirect(reverse('home'))
+    if not request.user.is_authenticated:
+        messages.error(request, 'Sorry, only registered users can do that!')
+        return redirect(reverse('home'))
+        
+
+    product = get_object_or_404(Product, pk=prid)
+    pro = Product.objects.get(id=id)
+    if request.method == "POST":
+        form = RatingForm(request.POST)
+        if form.is_valid():
+            product = form.cleaned_data['product']
+            user = form.cleaned_data['user']
+            rating = form.cleaned_data['rating']
+
+            product = request.POST.get('product', ''),
+            user = request.POST.get('user', ''),
+            rating = request.POST.get('rating', ''),
+
+            obj = Rating(product=product, user=user, rating=rating)
+            obj.save()
+            context = {'obj': obj}
+            return render(request, 'product/detail.html',context)
+        else:
+           form=RatingForm()
+        return HttpResponse('Please rate the product')
     """
