@@ -184,3 +184,29 @@ def rate_product(request, book):
            form=RatingForm()
         return HttpResponse('Please rate the product')
     """
+
+"""
+@login_required
+def get_user_rating(request, product_id):
+    Get user rating
+    redirect_url = request.POST['redirect_url']
+    book=get_object_or_404profcut,pk=product_id;
+    if request.method == 'POST':
+        form_data = {
+            'user_rating': request.POST['starinput'],
+            'user': request.user,
+            book:book,
+        }
+
+        rating_form = UserRatingsForm(form_data)
+        if rating_form.is_valid():
+            order = rating_form.save()
+            order.save()
+
+            return redirect(redirect_url)
+        else:
+            messages.error(request, 'There was an error with your form. \
+                Please double check your information.')
+
+    return redirect(redirect_url)
+"""
