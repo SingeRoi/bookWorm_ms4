@@ -109,9 +109,7 @@ form.addEventListener('submit', function(ev) {
 function update() {
     var one = document.getElementById('id_coins');
     var two = document.getElementById('chargeValue');
-    //two.value = parseInt(one.value) * 2;
     two.innerHTML = "$" + one.value;
-
 
     var coinValue = one;
 
@@ -119,33 +117,16 @@ function update() {
     var postData = {
         'current_coin': coinValue.value,
         'redirect_url': redirect_url.value,
+        'client_secret': clientSecret,
     };
 
     var url = '/topup/update_coins';
 
     $.post(url, postData).done(function () {
         //alert( "success" );
-        localStorage.setItem('id_coins', coinValue.value);
+        //localStorage.setItem('id_coins', coinValue.value);
         //location.reload();
-        document.getElementById("id_coins").value =localStorage.getItem('id_coins');
+        //document.getElementById("id_coins").value =localStorage.getItem('id_coins');
     });
-
-
-   /* $.post(url, postData, function() {
-        alert( "success" );
-    })
-        .done(function() {
-            alert( "second success" );
-        })
-        .fail(function() {
-            alert( "error" );
-        })
-        .always(function() {
-            alert( "finished" );
-        });
-*/
-
-
-    //one.value = tmpOne;
 
 }
