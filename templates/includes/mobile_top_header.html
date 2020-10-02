@@ -33,6 +33,8 @@
                 <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
             {% endif %}
             <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
+            <a href="{% url 'topup_coins' %}" class="dropdown-item">Top up bookCoins</a>
+            <a href="{% url 'update_billing' %}" class="dropdown-item">Update billing address</a>
             <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
         {% else %}
             <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
@@ -52,7 +54,7 @@
             {% if chapterOrders %}
                 {% for corder in chapterOrders %}
                     {% for item in corder.lineitems.all %}
-                        <a href="{% url 'product_detail' item.chapter.book.id %}" id={{ item.chapter.book.id }} class="dropdown-item">{{ item.book }}</a>
+                        <a href="{% url 'product_detail' item.chapter.book.id %}" id="mobile + {{ item.chapter.book.id }}" class="dropdown-item">{{ item.book }}</a>
                     {% endfor %}
                 {% endfor %}
             {% else %}

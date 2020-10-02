@@ -167,7 +167,7 @@ def topup_success(request, order_number):
                 user_profile_form.save()
 
     messages.success(request, f'Order successfully processed! \
-        Your order number is {order_number}. A confirmation \
+        Your order number is {order.order_number}. A confirmation \
         email will be sent to {order.email}.')
 
     if 'current_coin' in request.session:
@@ -224,10 +224,9 @@ def buy_chapter(request):
         if user_coin_form.is_valid():
             user_coin_form.save()
 
-    """messages.success(request, f'Order successfully processed! \
-        Your order number is {order_number}. A confirmation \
-        email will be sent to {order.email}.')
-    """
+    messages.success(request, f'Order successfully processed! \
+        You bought {chapter.chapter}')
+
 
     return redirect(reverse('product_detail', args=[productid]))
 

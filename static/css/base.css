@@ -163,10 +163,16 @@ body {
   z-index: 0;
 }
 
-/* styles user-rating input */
-.rating-input {
+/* styles user-rating popover input from https://mdbootstrap.com/snippets/jquery/bartek-malanowski/451394#css-tab-view */
+/*.rating-input {
     width: fit-content !important;
     left: 100px !important;
+}*/
+.rate-popover {
+    cursor: pointer;
+}
+.amber-text {
+    color: #f7e095;
 }
 
 /*Chapter display styling*/
@@ -247,6 +253,24 @@ body {
     .font-banner {
     font-size: 24px;
     }
+}
+
+
+/* ------------------------------- bootstrap toasts */
+
+.message-container {
+    position: fixed;
+    top: 72px;
+    right: 15px;
+    z-index: 99999999999;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 2px;
 }
 
 /* pad the top a bit when navbar is collapsed on mobile */

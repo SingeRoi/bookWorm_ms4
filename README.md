@@ -214,30 +214,45 @@ Further details on all Python packages used on this project can be found in the 
 
 
 ## Testing
-###User story testing  
- - a user can enter site without registration
+### User story testing  
+
+Checks that a user can:
+* visit site without registration 
 - can search for a title by genre, rating, price or deal (inc free)
 - or can search for a specific product by name, author
-- can see product details and can select to view free content
+- can see product details and can select free to view content
+
 - user is presented with clear information on how to purchase a product
-	- need to login/register 
+	- need to register/login 
 	- how to purchase bookCoins
 	- how to purchase chapters with bookCoins
-- user can register
-	- receive email  to confirm
-	- can confirm registration
-	- 
-can login
+	
+- free chapter content opens in reader window
+    - reader can read content and navigate back to book detail
+    
+* user can register
+	- receive email to confirm account
+	- can respond to email
+	- can proceed to login
+	
+* can login
 	- can access profile
-	- becomes authorised to see additional chapters
-	- can purchase bookCoins and paid for chapters
--  can request password reset
+	- become authorised to see additional chapters
+	- can purchase bookCoins and see updated amount and order details 
+	- see confirmation of purchase
+	- select pay for, and receive access to chapters
+	- see confirmation of purchase
+
+* if login fails 	
+    - can request password reset
 	- can reset password
+	- receive notification if reset unsuccessful and option to retry 
 	
 	
 		
 ### Admin user testing
 - can user login as a superuser?
+- can superuser perform all tasks above
 - can a superuser add a title?
 	- form responds to invalid input with an alert?
 	- entry can be cancelled?
