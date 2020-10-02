@@ -27,7 +27,7 @@ class OrderCoin(models.Model):
     country = CountryField(blank_label='Country *', null=False, blank=False)
     date = models.DateTimeField(auto_now_add=True)
     stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
-    coins = models.DecimalField(max_digits=1000, decimal_places=2, null=False, default=0)
+    coins = models.DecimalField(max_digits=1000, decimal_places=2, null=False, default='')
 
     def _generate_order_number(self):
         """
@@ -84,13 +84,13 @@ class OrderChapter(models.Model):
 
 
 class OrderChapterLineItem(models.Model):
-     order = models.ForeignKey(OrderChapter, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
-     chapter = models.ForeignKey(Chapter, null=False, blank=False, on_delete=models.CASCADE)
-     chapter_no = models.CharField(max_length=254, null=False, blank=False, editable=False, default=0)
-     book = models.CharField(max_length=254, null=False, blank=False)
-     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
+    order = models.ForeignKey(OrderChapter, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
+    chapter = models.ForeignKey(Chapter, null=False, blank=False, on_delete=models.CASCADE)
+    chapter_no = models.CharField(max_length=254, null=False, blank=False, editable=False, default=0)
+    book = models.CharField(max_length=254, null=False, blank=False)
+    lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
 
-     def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs):
         """
         Override the original save method to set the lineitem total
         and update the order total.
@@ -100,5 +100,5 @@ class OrderChapterLineItem(models.Model):
         self.book = f'{self.chapter.book}'
         super().save(*args, **kwargs)
 
-     def __str__(self):
+    def __str__(self):
         return f'SKU {self.chapter.sku} on order {self.order.order_number}'

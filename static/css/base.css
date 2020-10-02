@@ -147,6 +147,44 @@ body {
     border-color: #00f !important;
 }
 
+/* styling for ratings from https://codepen.io/Bluetidepro/pen/GkpEa nice display but needs less import to style*/
+
+
+/* star ratings method 5 from https://stackoverflow.com/questions/39838547/star-shaped-progress-bars-in-css-html-javascript*/
+outer {
+  position: absolute;
+  width: 250px;
+  height: 16px;
+  border: 1px solid #d8d8d8;
+}
+
+#inner {
+  position: absolute;
+  left: 15px;
+  right: 0;
+  top: 150px;
+  width: 22%; /* 32% is 5 stars complete*/
+  height: 2.5%;
+  bottom: 0;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/2e/Star.png');
+  background-repeat: repeat;
+  z-index: 5;
+}
+
+/ #overlay {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 10;
+}
+
+/* styles user-rating input */
+.rating-input {
+    width: fit-content !important;
+    left: 100px !important;
+}
 
 /*Chapter display styling*/
 .chapter-text-bg {
@@ -190,6 +228,7 @@ body {
     position: relative;
     margin-top: 7em;
     right: 15px;
+    left: 15px;
     z-index: 1200;
     color: #D8FDDA;
 }

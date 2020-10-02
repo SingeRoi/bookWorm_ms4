@@ -25,7 +25,7 @@ class OrderCoinForm(forms.ModelForm):
             'street_address1': 'Street Address 1',
             'street_address2': 'Street Address 2',
             'county': 'County, State or Locality',
-            'coins': 'How many coins would you like this time?'
+            'coins': 'Minimum topup amount is 5',
         }
 
         self.fields['full_name'].widget.attrs['autofocus'] = True
@@ -36,6 +36,8 @@ class OrderCoinForm(forms.ModelForm):
                 else:
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
+            if field == 'coins':
+                self.fields[field].widget.attrs['onchange'] = 'update()'
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             self.fields[field].label = False
 
@@ -43,12 +45,8 @@ class OrderCoinForm(forms.ModelForm):
 class OrderChapterForm(forms.ModelForm):
     class Meta:
         model = OrderChapter
-        exclude = ('order_number', 'user_profile', 'grand_total', 'date')
-        """fields = ('full_name', 'email', 'phone_number',
-                  'street_address1', 'street_address2',
-                  'town_or_city', 'postcode', 'country',
-                  'county', 'coins')
-        """
+        #exclude = ('order_number', 'user_profile', 'grand_total', 'date')
+        fields = {'user_profile',}
 
     def __init__(self, *args, **kwargs):
         """

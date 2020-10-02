@@ -22,3 +22,9 @@ class ProductForm(forms.ModelForm):
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'border-black rounded-5'
 
+'''class UserRatings(models.Model):
+
+    class Meta:
+        model = UserRatings
+        fields = ('product','user','rating')'''
+

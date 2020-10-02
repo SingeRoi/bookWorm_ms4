@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models import Avg
+from profiles.models import UserProfile
 
 # Create your models here.
 class Category(models.Model):
@@ -45,3 +47,22 @@ class Chapter(models.Model):
 
     def __str__(self):
         return self.sku
+
+'''class UserRatings(models.Model):
+    book = models.ForeignKey('Product', null=True, blank=True, on_delete=models.SET_NULL)
+    user = models.ForeignKey('UserProfile', null=True, blank=True, on_delete=models.SET_NULL)
+    user_rating = models.DecimalField(max_digits=6, decimal_places=2, default=0)
+
+
+    def __str__(self):
+        return self.user.username.user_rating'''
+'''
+    def get_rating(self):
+        """model function to return aggregate average of rating from reviews from other users"""
+
+        book.objects.aggregate(rating=Avg('user_rating'))
+        user_rating = user_rating['reviews']
+
+        rating = 0
+
+        return rating'''
