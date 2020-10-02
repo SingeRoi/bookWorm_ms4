@@ -19,11 +19,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap" rel="stylesheet">
-    <link href="//use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" type="text/css" href= "{% static 'css/stylesheet/less/main.less' %}" >
     {% endblock %}
-    
+
     {% block extra_head %}
     {% endblock %}
 
@@ -37,7 +36,8 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js"></script>
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
     {% endblock %}
 
     {% block extra_js %}
@@ -78,32 +78,41 @@
                     </a>
                     <div class="dropdown-menu border-0" aria-labelledby="user-options">
                         {% if request.user.is_authenticated %}
-                            {% if request.user.is_superuser or is_author %}
-                                <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
-                            {% endif %}
-                                <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-                                <a href="{% url 'topup_coins' %}" class="dropdown-item">Top up bookCoins</a>
-                                <a href="{% url 'update_billing' %}" class="dropdown-item">Update billing address</a>
-                                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                        {% if request.user.is_superuser or is_author %}
+                        <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
+                        {% endif %}
+                        <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
+                        <a href="{% url 'topup_coins' %}" class="dropdown-item">Top up bookCoins</a>
+                        <a href="{% url 'update_billing' %}" class="dropdown-item">Update billing address</a>
+                        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
                         {% else %}
-                            <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                            <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                        <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
                         {% endif %}
                     </div>
                 </li>
                 <li class="list-inline-item">
-                    <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link" href="">
-                    <div class="text-center">
-                        <div><i class="fas fa-shopping-bag fa-lg"></i></div>
-                        <p class="my-0">
-                            {% if grand_total %}
-                            ${{ grand_total|floatformat:2 }}
-                            {% else %}
-                            $0.00
-                            {% endif %}
-                        </p>
-                    </div>
+                    <a class="text-black nav-link" href="#" id="book-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="text-center">
+                            <div><i class="fas fa-book-open fa-lg"></i></div>
+                            <p class="my-0">My Bookshelf</p>
+                        </div>
                     </a>
+                    <div class="dropdown-menu border-0" aria-labelledby="book-options">
+                        {% if request.user.is_authenticated %}
+                            {% if chapterOrders %}
+                                {% for corder in chapterOrders %}
+                                    {% for item in corder.lineitems.all %}
+                                        <a href="{% url 'product_detail' item.chapter.book.id %}" id={{ item.chapter.book.id }} class="dropdown-item">{{ item.book }}</a>
+                                    {% endfor %}
+                                {% endfor %}
+                            {% else %}
+                                <a href="#" class="dropdown-item">No book</a>
+                            {% endif %}
+                        {% else %}
+                            <a href="#" class="dropdown-item">No book</a>
+                        {% endif %}
+                    </div>
                 </li>
             </ul>
         </div>
@@ -133,6 +142,11 @@
 {% endblock %}
 
 {% block postloadjs %}
+<script>
+    $('[id]').each(function (i) {
+    $('[id="' + this.id + '"]').slice(1).remove();
+});
+</script>
 {% endblock %}
 
 </body>

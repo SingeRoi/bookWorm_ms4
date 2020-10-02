@@ -10,10 +10,3 @@ urlpatterns = [
     path('wh/', webhook, name='webhook'),
 ]
 
-
-"""urlpatterns = [
-    
-    path('cache_checkout_data/', views.cache_checkout_data, name='cache_checkout_data'),
-    
-]
-"""

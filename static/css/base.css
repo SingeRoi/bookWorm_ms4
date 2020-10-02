@@ -151,34 +151,34 @@ body {
 
 
 /* star ratings method 5 from https://stackoverflow.com/questions/39838547/star-shaped-progress-bars-in-css-html-javascript*/
-outer {
+/*outer {
   position: absolute;
   width: 250px;
   height: 16px;
   border: 1px solid #d8d8d8;
-}
+}*/
 
 #inner {
   position: absolute;
   left: 15px;
   right: 0;
   top: 150px;
-  width: 22%; /* 32% is 5 stars complete*/
-  height: 2.5%;
+  width: var(--width); /* 1rem is 1 star */
+  height: 1rem;
   bottom: 0;
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/2e/Star.png');
   background-repeat: repeat;
   z-index: 5;
 }
 
-/ #overlay {
+/* #overlay {
   position: absolute;
   right: 0;
   top: 0;
   bottom: 0;
   background-color: #fff;
   z-index: 10;
-}
+}*/
 
 /* styles user-rating input */
 .rating-input {
@@ -201,7 +201,8 @@ outer {
 }
 
 /* Styling logout confirmation */
-.logout-message {
+.logout-message,
+.verification-message {
     margin-top: 7em;
     margin-right: 1em;
     background-color: #d39e !important;

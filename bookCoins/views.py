@@ -12,9 +12,6 @@ from products.models import Product, Chapter
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 
-from django.contrib.sessions.backends.db import SessionStore
-
-
 import json
 import stripe
 
@@ -41,8 +38,12 @@ def update_coins(request):
     """ Add a quantity of the specified product to the shopping bag """
     redirect_url = request.POST.get('redirect_url')
     current_coin = request.POST.get('current_coin')
-
+    if not request.POST.get('client_secret'):
+        pid={}
+    else:
+        pid = request.POST.get('client_secret').split('_secret')[0]
     request.session['current_coin'] = current_coin
+    request.session['pid'] = pid
     request.session.modified = True
 
     return redirect(redirect_url)
@@ -52,12 +53,10 @@ def topup_coins(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
-    intent = {}
+    current_coin = int(request.session.get('current_coin', 5))
+    pid = request.session.get('pid')
+    stripe_total = round(current_coin * 100)
 
-
-    current_coin = int(request.session.get('current_coin', 0))
-
-    print(request.method)
     if request.method == 'POST':
         form_data = {
             'full_name': request.POST['full_name'],
@@ -74,10 +73,9 @@ def topup_coins(request):
 
         order_form = OrderCoinForm(form_data)
         if order_form.is_valid():
-            print("form is valid")
             order = order_form.save(commit=False)
-            pid = request.POST.get('client_secret').split('_secret')[0]
-            order.stripe_pid = pid
+            pid_in_form = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid_in_form
             order.save()
             # Save the info to the user's profile if all is well
             request.session['save_info'] = 'save-info' in request.POST
@@ -106,22 +104,17 @@ def topup_coins(request):
         else:
             order_form = OrderCoinForm()
 
-    if current_coin > 0:
-        coinvalue = current_coin
-        stripe_total = round(coinvalue * 100)
+    if not pid:
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
         )
-
-    if not intent:
-        client_secret = {}
-    else:
         client_secret = intent.client_secret
-
-    #if 'current_coin' in request.session:
-    #   del request.session['current_coin']
+    else:
+        stripe.api_key = stripe_secret_key
+        stripe.PaymentIntent.modify(pid, amount=stripe_total)
+        client_secret = pid
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing. \
@@ -179,6 +172,8 @@ def topup_success(request, order_number):
 
     if 'current_coin' in request.session:
         del request.session['current_coin']
+    if 'pid' in request.session:
+        del request.session['pid']
 
     context = {
         'order': order,
