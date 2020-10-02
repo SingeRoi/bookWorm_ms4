@@ -214,9 +214,6 @@ def buy_chapter(request):
             # Attach the user's profile to the order
             order.user_profile = profile
             order.save()
-        else:
-            print("there's an error")
-            print(order_chapter_form.errors)
 
         # Save the user's coins
 
@@ -231,13 +228,6 @@ def buy_chapter(request):
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
     """
-    product = get_object_or_404(Product, pk=productid)
-    chapters = Chapter.objects.filter(book=productid)
-
-    context = {
-        'product': product,
-        'chapters':chapters,
-    }
 
     return redirect(reverse('product_detail', args=[productid]))
 

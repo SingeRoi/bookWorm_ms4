@@ -21,13 +21,13 @@
     </div>
 </li>
 <li class="list-inline-item dropdown">
-    <a class="text-black nav-link d-block d-lg-none" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <a class="text-black nav-link px-0 d-block d-lg-none" href="#" id="mobile-user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="text-center">
             <div><i class="fas fa-user fa-lg"></i></div>
             <p class="my-0">My Account</p>
         </div>
     </a>
-    <div class="dropdown-menu border-0" aria-labelledby="user-options">
+    <div class="dropdown-menu border-0" aria-labelledby="mobile-user-options">
         {% if request.user.is_authenticated %}
             {% if request.user.is_superuser %}
                 <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
@@ -40,26 +40,26 @@
         {% endif %}
     </div>
 </li>
-<li class="list-inline-item">
-    <a class="text-black nav-link d-block d-lg-none" href="#" id="book-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<li class="list-inline-item dropdown">
+    <a class="text-black nav-link px-0 d-block d-lg-none" href="#" id="mobile-book-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="text-center">
-            <div><i class="fas fa-open-book fa-lg"></i></div>
+            <div><i class="fas fa-book-open fa-lg"></i></div>
             <p class="my-0">My Bookshelf</p>
         </div>
     </a>
-    <div class="dropdown-menu border-0" aria-labelledby="book-options">
+    <div class="dropdown-menu border-0" aria-labelledby="mobile-book-options">
         {% if request.user.is_authenticated %}
-        {% if chapterOrders %}
-        {% for corder in chapterOrders %}
-        {% for item in corder.lineitems.all %}
-        <a href="{% url 'product_detail' item.chapter.book.id %}" id={{ item.chapter.book.id }} class="dropdown-item">{{ item.book }}</a>
-        {% endfor %}
-        {% endfor %}
+            {% if chapterOrders %}
+                {% for corder in chapterOrders %}
+                    {% for item in corder.lineitems.all %}
+                        <a href="{% url 'product_detail' item.chapter.book.id %}" id={{ item.chapter.book.id }} class="dropdown-item">{{ item.book }}</a>
+                    {% endfor %}
+                {% endfor %}
+            {% else %}
+                <a href="#" class="dropdown-item">No book</a>
+            {% endif %}
         {% else %}
-        <a href="#" class="dropdown-item">No book</a>
-        {% endif %}
-        {% else %}
-        <a href="#" class="dropdown-item">No book</a>
+            <a href="#" class="dropdown-item">No book</a>
         {% endif %}
     </div>
 </li>

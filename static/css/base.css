@@ -147,38 +147,21 @@ body {
     border-color: #00f !important;
 }
 
-/* styling for ratings from https://codepen.io/Bluetidepro/pen/GkpEa nice display but needs less import to style*/
 
-
-/* star ratings method 5 from https://stackoverflow.com/questions/39838547/star-shaped-progress-bars-in-css-html-javascript*/
-/*outer {
-  position: absolute;
-  width: 250px;
-  height: 16px;
-  border: 1px solid #d8d8d8;
-}*/
+/* star ratings display simplified from method 5 from https://stackoverflow.com/questions/39838547/star-shaped-progress-bars-in-css-html-javascript*/
 
 #inner {
-  position: absolute;
-  left: 15px;
+  position: relative;
+  left: 3rem;
   right: 0;
-  top: 150px;
+  top: -1.2rem;
   width: var(--width); /* 1rem is 1 star */
   height: 1rem;
   bottom: 0;
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/2e/Star.png');
   background-repeat: repeat;
-  z-index: 5;
+  z-index: 0;
 }
-
-/* #overlay {
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background-color: #fff;
-  z-index: 10;
-}*/
 
 /* styles user-rating input */
 .rating-input {
@@ -200,20 +183,23 @@ body {
     min-width: 12em;
 }
 
-/* Styling logout confirmation */
+/* Styling logout and other confirmations */
 .logout-message,
 .verification-message {
     margin-top: 7em;
     margin-right: 1em;
-    background-color: #d39e !important;
+    background-color: #337addee !important;
     padding-top: 15px;
     border-radius: 5px;
     top: 50px;
     right: auto;
 }
+
 .message-container {
     position: fixed;
 }
+
+
 /* colours signup edit button text*/
 .font-crayola {
     color: #FFE785 !important;

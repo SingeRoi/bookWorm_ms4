@@ -5,7 +5,7 @@
 
 ### <a style="font=Leckerli+One">  bookWorm </a> we love a good read
 
-##Site purpose
+## Site purpose
 
 This is a test of an English language webnovel publishing site of a type popular in China and of growing popularity elsewhere. The owner's purpose is to provide a source of new eNovels and eManga as well as other online publications that will be if interest to readers. The owner will gather income from purchase of access to publications and individual chapters are usually provided as the main products. Titles are often published in a serialised form with readers awaiting the next installment. Typical access is via mobile devices. The site provides a basic reader function to access content linked to registered user accounts. Some content is normally provided for free as a taster and the site free content is available to any reader. 
 
@@ -14,9 +14,7 @@ The owner also wishes to recruit writers attracted to contribute their work to t
 Users purchase titles by purchasing credit in their profile on the site using a card (in reality usually methods such as WeChat or Alipay dominate). These then allow purchase of chapters. The presence of credit encourages users to keep returning to the site. Other payment schemes such as subscriptions exist but these are outside the scope of this demo project 
 
 
-##About bookWorm. 
-
-This a prototype e-commerce site for promotion of inclusive new literature in the competitive e-novels/comics market. 
+## About bookWorm. 
 
 Site users can browse titles according to type (book, comic) or genre (sci-fi, fantasy or historical). After registration and login users can read sample chapters and then choose to purchase further chapters or a subscription. Users can then review the products they buy. Users can also submit their own works for online publication and/or may offer to act as translators for new works users will receive payment for this. 
 
@@ -27,11 +25,13 @@ Site users can browse titles according to type (book, comic) or genre (sci-fi, f
 The design process began with the bookWorm brand logo which uses a strong blue. From this to provide a fresh look I chose a palette based on shades of blue and green selected using the palette tool at [Coolors)(https://coolors.co/). Many aspects of the design use bootstrap components for consistency but to give a modern look they have been restyled as, for example, the navbar toggler button which has no border in order to give it a more contemporary look. The font choice for the logo, was determined by experimentation using [Fontastic]() and provides an appealing visual pun.  The design seeks to provide a visually consistent, responsive and easy to navigate user experience.
 
 [landing page with 'Show titles' dropdown]()
+
 The layout of the navbar, home and product pages use the format of the Code Instiute BoutiqueAdo project. I chose to retain the format of the 4 navbar buttons including the 'Show Titles' dropdown which provides functions that could be seen as redundant with that of the 'sort by menu'. However the 'sort by menu' appears only on the product pages and therefore I felt it was valuable to users to have the ability to be able to perform the wider searches provided by this dropdown directly from other locations especially from the landing page. 
 
 ## UX
 
-I looked at the other project ideas given by the Code Institute and worked them into my idea: 
+This an e-commerce site for promotion of inclusive new literature in the competitive e-novels/comics market. 
+Readers are looking for varied content but especially for enovels and eManga.  
 
 **Potential features to include:**
 * An online store focused on selling new eLiterature
@@ -46,9 +46,11 @@ I looked at the other project ideas given by the Code Institute and worked them 
 
 * Allow users to securely purchase title chapters, allow authors/translators to receive payments
 
+* Provide a bookshelf to give rapid access to content purchased by user
+
 * Users have to be registered to purchase, rate, create or translate 
 
-* Allow registered users to write reviews about the titles, only if they purchased them
+* Allow registered users to rate titles, only if they purchased them
 
 * Include pagination and/or other dynamic and responsive display actions.
 
@@ -56,30 +58,36 @@ I looked at the other project ideas given by the Code Institute and worked them 
 ### User Stories
 
 This site is intended for readers and creators of new eNovels, eComics and other literary works in the growing foreign language publications market of east Asia. These publications re typically provided on a chapter by chapter basis offereing novel challenges in terms of dealing with management and presentation of products.
-**_"As administrator I would like to"_**
-* easily manage site to provide titles of interest in an attractive format
-* attract new titles and provide a mechanism for translation of new works 
- * generate ongoing interest in the site & build a reader/writer community
-* make a profit from selling access to chapters and/or subscriptions to titles
-* securely collect/make payments for works
 
 **_"As a reader I would like"_**
 * view all products and blog posts without logging in 
 * view the site from any device (mobile, tablet, desktop)
-* leave a review for products I liked
+* be able to read sample chapters
 * be able to register and log in/out
 * be able to change my password 
 * filter products based on type/genre/rating
-* find products suiting my taste 
+* find titles of types/genres I like
 * search through titles
-* find products of a particular type e.g. sci-fi
+* find products of a particular type e.g. gothic, teen
 * rate products I have read
 * see newest titles
-* have a bookbag I can easily add and remove titles/subscriptions from
+* have a bookshelf I can easily find my titles/subscriptions on
 * to be able to buy related titles
 * be part of the community by creating or translating new works
-* do all the above on an easily navigated and attractive website 
-**_"As an author I would like to"_**
+ 
+**_"As an author/translator I would like to"_**
+* be able to submit new chapters for publication
+* be able to find chapters needing translation
+* receive payments
+* keep track of work done and payments received
+
+**_"As owner/administrator I would like to"_**
+* easily manage site to provide titles of interest in an attractive format
+* securely collect/make payments for works
+* make a profit from selling access to chapters and/or subscriptions to titles
+* give users confidence in the security of the site and their data
+* attract new titles and provide a mechanism for translation of new works 
+* generate ongoing interest in the site & build a reader/writer community
 
 ### Design
 
@@ -95,6 +103,7 @@ I wanted to style the website with a fresh, inviting colour palette. It seekd to
 | #D8FDDA    |216, 253, 218| nyanza|
 | #FFE785    |255, 231, 133| crayola yellow   |
 | #1ec32b       |30, 195, 43| dark pastel green     | 
+| #337addee      |51, 122, 221| azure     | 
 | #00F       | 0, 0, 255 | blue|
 | #694F5D       | 105, 79, 93 | eggplant|
 | #000000     | 0, 0, 0 | black |
