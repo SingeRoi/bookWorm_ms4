@@ -50,5 +50,15 @@ class ChapterTestCase(TestCase):
         self.assertEqual(chapter.context, 'A longgggggggggggggggggggggggggggggggggggggggggggggggggggggggg word')
 
 
+class ProductPageTest(TestCase):
+    def test_product_page(self):
+        response = self.client.get('/products/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_edit_a_product(self):
+        response = self.client.get('/products/edit/1/')
+        self.assertEqual(response.status_code, 302)
+
+
 
 

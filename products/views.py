@@ -2,10 +2,11 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
-from .models import Product, Category, Chapter
+from .models import Product, Category, Chapter, UserRatings
+from profiles.models import UserProfile
 from django.db.models.functions import Lower
 from django.core.paginator import Paginator
-from .forms import ProductForm
+from .forms import ProductForm, UserRatingsForm
 
 # Create your views here.
 
@@ -68,10 +69,20 @@ def product_detail(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
     chapters = Chapter.objects.filter(book=product_id)
+    if request.user.is_authenticated:
+        user = get_object_or_404(UserProfile, user=request.user)
+        try:
+            rating = UserRatings.objects.get(book=product, user=user)
+            rating_loop_times = range(1, int(rating.user_rating)+1)
+        except UserRatings.DoesNotExist:
+            rating_loop_times = 0
+    else:
+        rating_loop_times = 0
 
     context = {
         'product': product,
-        'chapters':chapters,
+        'chapters': chapters,
+        'ratingLoopTimes': rating_loop_times,
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -153,37 +164,25 @@ def delete_product(request, product_id):
     messages.success(request, 'Deleted title.')
     return redirect(reverse('products'))
 
-"""
-rating function {% url 'rate_product' %}
+
 @login_required
-def rate_product(request, book):
-    Rate a title in the store only as a purchaser or superuser
-    if not request.user.is_authenticated:
-        messages.error(request, 'Sorry, only registered users can do that!')
-        return redirect(reverse('home'))
-        
+def rate_product(request, product_id):
 
-    product = get_object_or_404(Product, pk=prid)
-    pro = Product.objects.get(id=id)
+
+    product = get_object_or_404(Product, pk=product_id)
+    user = get_object_or_404(UserProfile, user=request.user)
+    form_data = {
+        'book': product,
+        'user': user,
+        'user_rating': request.POST['starinput'],
+    }
+
     if request.method == "POST":
-        form = RatingForm(request.POST)
+        form = UserRatingsForm(form_data)
         if form.is_valid():
-            product = form.cleaned_data['product']
-            user = form.cleaned_data['user']
-            rating = form.cleaned_data['rating']
+            form.save()
 
-            product = request.POST.get('product', ''),
-            user = request.POST.get('user', ''),
-            rating = request.POST.get('rating', ''),
-
-            obj = Rating(product=product, user=user, rating=rating)
-            obj.save()
-            context = {'obj': obj}
-            return render(request, 'product/detail.html',context)
-        else:
-           form=RatingForm()
-        return HttpResponse('Please rate the product')
-    """
+    return redirect(reverse('product_detail', args=[product.id]))
 
 """
 @login_required

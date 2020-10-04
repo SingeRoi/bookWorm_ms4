@@ -74,9 +74,10 @@ def topup_coins(request):
         order_form = OrderCoinForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
-            pid_in_form = request.POST.get('client_secret').split('_secret')[0]
-            order.stripe_pid = pid_in_form
-            order.save()
+            #pid_in_form = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
+            if pid:
+                order.save()
             # Save the info to the user's profile if all is well
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('topup_success', args=[order.order_number]))
@@ -216,7 +217,6 @@ def buy_chapter(request):
             order.save()
 
         # Save the user's coins
-
         coin_data = {
             'bookcoins': profile.bookcoins - chapter.price,
         }

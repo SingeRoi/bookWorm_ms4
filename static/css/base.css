@@ -171,7 +171,13 @@ body {
 .rate-popover {
     cursor: pointer;
 }
+
 .amber-text {
+    color: #f7e095;
+}
+
+
+.fixed-amber-text {
     color: #f7e095;
 }
 
@@ -214,8 +220,12 @@ body {
     position: fixed;
 }
 
+/* colours email confirm text*/
+.font-eggplant {
+    color: #694F5D !important;
+}
 
-/* colours signup edit button text*/
+/* colours various text*/
 .font-crayola {
     color: #FFE785 !important;
 }
@@ -264,23 +274,6 @@ body {
     }
 }
 
-
-/* ------------------------------- bootstrap toasts */
-
-.message-container {
-    position: fixed;
-    top: 72px;
-    right: 15px;
-    z-index: 99999999999;
-}
-
-.custom-toast {
-    overflow: visible;
-}
-
-.toast-capper {
-    height: 2px;
-}
 
 /* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {

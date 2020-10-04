@@ -115,7 +115,7 @@ function update() {
     var redirect_url = document.getElementById('redirect_url');
     var errorDiv = document.getElementById('coin-errors');
 
-    if (coinValue.value <= 0){
+    if (coinValue.value < 5){
         var html = `
                     <span class="icon" role="alert">
                     <i class="fas fa-times"></i>
