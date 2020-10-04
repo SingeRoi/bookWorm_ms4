@@ -62,6 +62,7 @@
             <fieldset class="rounded px-3 mb-5">
                 <legend class="fieldset-label small text-black px-2 w-auto">Order Your BookCoins</legend>
                 {{ order_form.coins | as_crispy_field }}
+                <div class="mb-3 text-danger" id="coin-errors" role="alert"></div>
             </fieldset>
 
 

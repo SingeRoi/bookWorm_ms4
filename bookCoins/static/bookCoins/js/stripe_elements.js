@@ -112,21 +112,26 @@ function update() {
     two.innerHTML = "$" + one.value;
 
     var coinValue = one;
-
     var redirect_url = document.getElementById('redirect_url');
-    var postData = {
-        'current_coin': coinValue.value,
-        'redirect_url': redirect_url.value,
-        'client_secret': clientSecret,
-    };
+    var errorDiv = document.getElementById('coin-errors');
 
-    var url = '/topup/update_coins';
+    if (coinValue.value <= 0){
+        var html = `
+                    <span class="icon" role="alert">
+                    <i class="fas fa-times"></i>
+                    </span>
+                    <span>Sorry, the minimum topup is 5.</span>`;
+        $(errorDiv).html(html);
+    } else {
+        errorDiv.textContent = '';
+        var postData = {
+            'current_coin': coinValue.value,
+            'redirect_url': redirect_url.value,
+            'client_secret': clientSecret,
+        };
 
-    $.post(url, postData).done(function () {
-        //alert( "success" );
-        //localStorage.setItem('id_coins', coinValue.value);
-        //location.reload();
-        //document.getElementById("id_coins").value =localStorage.getItem('id_coins');
-    });
+        var url = '/topup/update_coins';
 
+        $.post(url, postData);
+    }
 }
