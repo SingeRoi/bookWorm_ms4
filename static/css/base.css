@@ -175,6 +175,15 @@ body {
     color: #f7e095;
 }
 
+.popover-inner {
+    display: flex;
+}
+
+.popover {
+    display: none;
+}
+
+
 /*Chapter display styling*/
 .chapter-text-bg {
     background-color: #f0f0f0;

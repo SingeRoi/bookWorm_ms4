@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     # 'bag',
     'profiles',
     'bookCoins',
+    'mathfilters',
 
     # Other
     'crispy_forms',

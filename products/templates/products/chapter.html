@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load mathfilters %}
 
 
 {% block extra_css %}
@@ -38,10 +39,9 @@
                 <div>
                     <hr class="chapter-hr w-50 mb-1">
                 </div>
-                <a href="#" class="badge badge-primary">Previous Chapter</a>
+                <a {% for corder in chapterOrders %}{% for item in corder.lineitems.all %}{% if chapter.id|sub:1 == item.chapter.id %}href="{% url 'chapter' product.id chapter.id|sub:1 %}"{% endif %}{% endfor %}{% endfor %} class="badge badge-primary">Previous Chapter</a>
                 <a href="{% url 'product_detail' product.id %}" class="badge badge-primary">Menu</a>
-                <a href="#" class="badge badge-primary">Next Chapter</a>
-
+                <a {% for corder in chapterOrders %}{% for item in corder.lineitems.all %}{% if chapter.id|addition:1 == item.chapter.id %}href="{% url 'chapter' product.id chapter.id|addition:1 %}"{% endif %}{% endfor %}{% endfor %}  class="badge badge-primary">Next Chapter</a>
             </div>
         </div>
     </div>
