@@ -28,6 +28,15 @@ The design process began with the bookWorm brand logo which uses a strong blue. 
 
 The layout of the navbar, home and product pages use the format of the Code Instiute BoutiqueAdo project. I chose to retain the format of the 4 navbar buttons including the 'Show Titles' dropdown which provides functions that could be seen as redundant with that of the 'sort by menu'. However the 'sort by menu' appears only on the product pages and therefore I felt it was valuable to users to have the ability to be able to perform the wider searches provided by this dropdown directly from other locations especially from the landing page. 
 
+### Outstanding design issues
+
+The following are design issues I would like to address further if time allowed
+
+* appearance of chapter buttons on product_detail pages to set all to the width of the widest button
+* apply corresponding shading to Rating/My rating stars
+* complete styling of ereader
+  
+
 ## UX
 
 This an e-commerce site for promotion of inclusive new literature in the competitive e-novels/comics market. 
@@ -195,8 +204,10 @@ The website is designed using following technologies:
 
 #### Frameworks
 
+Frameworks allow rapid efficient development
+
 * [Bootstrap](https://getbootstrap.com/) - 
-Bootstrap is a conventient a great framework and easy to use.
+Bootstrap is a convenient framework for rapid, consistent front-end styling.
 
 * [JQuery](https://jquery.com/) - 
 The project uses JQuery to simplify DOM manipulation.
@@ -204,10 +215,6 @@ The project uses JQuery to simplify DOM manipulation.
 * [Django](https://www.djangoproject.com/) - 
 Django is a free and open-source web framework that renders the back-end Python with the front-end Bootstrap.
 
-* [Intelij]()- this was the IDE used for this project
-* [Github](https://github.com/) - Github was used as remote storage and with Git for version control
-* [FontAwesome](https://fontawesome.com/) - Font Awesome provides a convenient library of icons. I used this library for icons to enhance UX by providing ease of recognition of function.
-* [Google Fonts](https://fonts.google.com/) - There is a great selection of fonts in the Google Fonts library, some of which I used in my project.
 
 ### Frontend Technologies
 
@@ -229,6 +236,10 @@ Further details on all Python packages used on this project can be found in the 
 ### Other Technologies
 
 * [Stripe](https://stripe.com/ie) - Stripe allows the user to make secure payments.
+* [Intelij](https://www.jetbrains.com/idea/)- the free educational version of this IDE was used for this project
+* [Github](https://github.com/) - Github was used as remote storage and with Git for version control
+* [FontAwesome](https://fontawesome.com/) - Font Awesome provides a convenient library of icons. I used this library for icons to enhance UX by providing ease of recognition of function.
+* [Google Fonts](https://fonts.google.com/) - There is a great selection of fonts in the Google Fonts library, some of which I used in my project.
 
 ### Other resources
 
@@ -399,7 +410,9 @@ The
 ### Code
 * Product page pagination uses the code for page view pagination from
 https://docs.djangoproject.com/en/3.1/topics/pagination/
-* 
+* The star ratings display allowing visualization of fractional ratings was simplified from method 5 from https://stackoverflow.com/questions/39838547/star-shaped-progress-bars-in-css-html-javascript
+* The user star ratings input with hover was simplified from that of [Bartek Malanowski](https://mdbootstrap.com/snippets/jquery/bartek-malanowski/451394#css-tab-view) in particular the popover function was removed as it was distracting and unnecessary in this context
+
 
 I also received tips on snippets of my code through [Stack Overflow](https://stackoverflow.com/), [CodePen]( https://codepen.io/) and [W3Schools](https://www.w3schools.com/).
 

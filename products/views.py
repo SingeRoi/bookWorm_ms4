@@ -7,6 +7,7 @@ from profiles.models import UserProfile
 from django.db.models.functions import Lower
 from django.core.paginator import Paginator
 from .forms import ProductForm, UserRatingsForm
+from django.db.models import Sum, Count, FloatField
 
 # Create your views here.
 
@@ -74,6 +75,10 @@ def product_detail(request, product_id):
         try:
             rating = UserRatings.objects.get(book=product, user=user)
             rating_loop_times = range(1, int(rating.user_rating)+1)
+            old_rating = product.rating
+            book_ratings = UserRatings.objects.filter(book=product).aggregate(Sum('user_rating', output_field=FloatField()))
+            product.rating = (book_ratings['user_rating__sum'] + float(old_rating)) / (UserRatings.objects.filter(book=product).count() + 1)
+            product.save()
         except UserRatings.DoesNotExist:
             rating_loop_times = 0
     else:

@@ -35,16 +35,17 @@
                     <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
                         <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
                     </a>
-                    <!-- Allow superuser to edit/delete products -->
+                </p>
+                <!-- Allow superuser to edit/delete products -->
                     {% if request.user.is_superuser %}
                     <a class="font-crayola" href="{% url 'edit_product' product.id %}">Edit</a>
                     <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
                     {% endif %}
-                </p>
                 {% endif %}
                 <div class="col" id="ratings">
                     <div class="row">
                         {% if product.rating %}
+                        <div class="star-ratings-css">
                             <div class="star-ratings-css">
                                 <div id="outer">
                                     <small class="text-muted">Average rating <div>{{ product.rating }} / 5 <div id="inner" style="--width:{{ product.rating }}rem"></div> <div class="rating-text"></div></div></small>
@@ -53,110 +54,115 @@
                                 </div>
                             </div>
                         {% endif %}
-                    </div>
 
                     <!-- user rating product -->
                     {% if request.user.is_authenticated %}
                         {% if ratingLoopTimes == 0 %}
-                            <form class="form update-form" id="rating-form" action="{% url 'rate_product' product.id %}" method="POST">
-                                {% csrf_token %}
-                                <div class="form-group">
-                                    <div class="rating-input input-group">
-                                                <span id="rateMe"> My rating
-                                                  <i class="fas fa-star py-2 px-1 rate-popover" data-index="0" data-html="true" data-toggle="popover" data-placement="top" title="Very bad"></i>
-                                                  <i class="fas fa-star py-2 px-1 rate-popover" data-index="1" data-html="true" data-toggle="popover" data-placement="top" title="Poor"></i>
-                                                  <i class="fas fa-star py-2 px-1 rate-popover" data-index="2" data-html="true" data-toggle="popover" data-placement="top" title="OK"></i>
-                                                  <i class="fas fa-star py-2 px-1 rate-popover" data-index="3" data-html="true" data-toggle="popover" data-placement="top" title="Good"></i>
-                                                  <i class="fas fa-star py-2 px-1 rate-popover" data-index="4" data-html="true" data-toggle="popover" data-placement="top" title="Excellent"></i>
-                                                </span>
-                                        <input type="hidden" name="starinput" id="starinput" value=""/>
+                            <small class="my-rating-small">
+                                <form class="form update-form" id="rating-form" action="{% url 'rate_product' product.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <div class="rating-input input-group">
+                                                    <span id="rateMe"> My rating
+                                                      <i class="fas fa-star py-2 px-0 rate-popover" data-index="0" data-html="true" data-toggle="popover" data-placement="top" title="Very bad"></i>
+                                                      <i class="fas fa-star py-2 px-0 rate-popover" data-index="1" data-html="true" data-toggle="popover" data-placement="top" title="Poor"></i>
+                                                      <i class="fas fa-star py-2 px-0 rate-popover" data-index="2" data-html="true" data-toggle="popover" data-placement="top" title="OK"></i>
+                                                      <i class="fas fa-star py-2 px-0 rate-popover" data-index="3" data-html="true" data-toggle="popover" data-placement="top" title="Good"></i>
+                                                      <i class="fas fa-star py-2 px-0 rate-popover" data-index="4" data-html="true" data-toggle="popover" data-placement="top" title="Excellent"></i>
+                                                    </span>
+                                            <input type="hidden" name="starinput" id="starinput" value=""/>
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
-                        {% else %}
-                            <span id="rated"> My rating
-                                {% for i in ratingLoopTimes %}
-                                    <i class="fas fa-star py-2 px-1 rate-popover fixed-amber-text" data-index="0" data-html="true" data-toggle="popover" data-placement="top" title="Very bad"></i>
-                                {% endfor %}
-                            </span>
+                                </form>
+                            {% else %}
+                                <small class="my-rating-small">
+                                    <span id="rated"> My rating
+                                        {% for i in ratingLoopTimes %}
+                                            <i class="fas fa-star py-2 px-0 rate-popover fixed-amber-text" data-index="0" data-html="true" data-toggle="popover" data-placement="top" title="Very bad"></i>
+                                        {% endfor %}
+                                    </span>
+                                </small>
+                            </small>
                         {% endif %}
                     {% endif %}
                 </div>
 
-                <p class="mt-3">{{ product.description }}</p>
-                <div class="chapter-badges">
-                    {% for chapter in chapters %}
-                    {% if forloop.first %}
-                    <div class="row">
-                        <a class="" href="{% url 'chapter' product.id chapter.id %}">
-                            {% if chapter.chapter == chapter.name %}
-                            <span class="p-2 mt-2 badge badge-blue text-black rounded-5 border border-primary">{{ chapter.chapter }}</span>
-                            {% else %}
-                            <span class="p-2 mt-2 badge badge-blue text-black rounded-5 border border-primary">{{ chapter.chapter }} {{ chapter.name }}</span>
-                            {% endif %}
-                            <span class="text-dark">First chapter is free! Read now!</span>
-                        </a>
-                    </div>
-                    {% else %}
-                    {% if request.user.is_authenticated %}
-                    <div class="row">
-                        <a data-chapterid={{ chapter.id }} data-productid={{ product.id }} data-chpmodalcode={{ chapter.modalcode }} class="chaptergroup" {% for corder in chapterOrders %}{% for item in corder.lineitems.all %}{% if chapter.chapter == item.chapter_no %}href="{% url 'chapter' product.id chapter.id %}"{% endif %}{% endfor %}{% endfor %}>
-                            {% if chapter.chapter == chapter.name %}
-                            <span class="chapterspan p-2 mt-2 badge badge-blue text-black rounded-5 border border-primary">{{ chapter.chapter }}</span>
-                            {% else %}
-                            <span class="chapterspan p-2 mt-2 badge badge-blue text-black rounded-5 border border-primary">{{ chapter.chapter }} {{ chapter.name }}</span>
-                            {% endif %}
-                        </a>
-                    </div>
-                    <div class="modal fade" id={{ chapter.modalcode }} role="dialog">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Like the novel?</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+            <p class="mt-3">{{ product.description }}</p>
+            <div class="chapter-badges">
+
+                {% for chapter in chapters %}
+                {% if forloop.first %}
+                <span class="text-blue">The first chapter is free! Read it now!</span>
+                <div class="row">
+                    <a class="" href="{% url 'chapter' product.id chapter.id %}">
+                        {% if chapter.chapter == chapter.name %}
+                        <span class="p-2 mt-2 badge badge-blue text-black rounded-5 border border-primary">{{ chapter.chapter }}</span>
+                        {% else %}
+                        <span class="p-2 mt-2 badge badge-blue text-black rounded-5 border border-primary">{{ chapter.chapter }} {{ chapter.name }}</span>
+                        {% endif %}
+                    </a>
+                </div>
+                <span class="text-blue">Love the story? Read more!</span>
+                {% else %}
+                {% if request.user.is_authenticated %}
+                <div class="row">
+                    <a data-chapterid={{ chapter.id }} data-productid={{ product.id }} data-chpmodalcode={{ chapter.modalcode }} class="chaptergroup" {% for corder in chapterOrders %}{% for item in corder.lineitems.all %}{% if chapter.chapter == item.chapter_no %}href="{% url 'chapter' product.id chapter.id %}"{% endif %}{% endfor %}{% endfor %}>
+                        {% if chapter.chapter == chapter.name %}
+                        <span class="chapterspan p-2 mt-2 badge badge-blue text-black rounded-5 border border-primary">{{ chapter.chapter }}</span>
+                        {% else %}
+                        <span class="chapterspan p-2 mt-2 badge badge-blue text-black rounded-5 border border-primary">{{ chapter.chapter }} {{ chapter.name }}</span>
+                        {% endif %}
+                    </a>
+                </div>
+                <div class="modal fade" id={{ chapter.modalcode }} role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Like the novel?</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form class="mt-3 rounded-5" action="{% url 'buy_chapter' %}" method="POST">
+                                {% csrf_token %}
+                                <div class="modal-body">
+                                    <p>Would you like to buy this chapter?</p>
+                                    <p> Chapter Number: {{ chapter.chapter}} in <strong>{{ chapter.book }}</strong></p>
+                                    <p> This chapter costs {{ chapter.price }} coins</p>
+                                    <input type="hidden" name="productId" value=""/>
+                                    <input type="hidden" name="chapterId" value=""/>
                                 </div>
-                                <form class="mt-3 rounded-5" action="{% url 'buy_chapter' %}" method="POST">
-                                    {% csrf_token %}
-                                    <div class="modal-body">
-                                        <p>Would you like to buy this chapter?</p>
-                                        <p> Chapter Number: {{ chapter.chapter}} in <strong>{{ chapter.book }}</strong></p>
-                                        <p> This chapter costs {{ chapter.price }} coins</p>
-                                        <input type="hidden" name="productId" value=""/>
-                                        <input type="hidden" name="chapterId" value=""/>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Buy</button>
-                                </form>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                </div>
+                                <button type="submit" class="btn btn-primary modal-buy-btn">Buy</button>
+                            </form>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             </div>
                         </div>
                     </div>
-                    {% else %}
-                    <div class="row">
-                        <a class="" href="{% url 'account_login' %}">
-                            {% if chapter.chapter == chapter.name %}
-                            <span class="p-2 mt-2 badge badge-white text-black rounded-5 border border-dark">{{ chapter.chapter }}</span>
-                            {% else %}
-                            <span class="p-2 mt-2 badge badge-white text-black rounded-5 border border-dark">{{ chapter.chapter }} {{ chapter.name }}</span>
-                            {% endif %}
-                        </a>
-                    </div>
-                    {% endif %}
-                    {% endif%}
-                    {% endfor %}
                 </div>
-                <div class="col{% if s %}-12 mt-2{% endif %}">
-                    <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 mt-5">
+                {% else %}
+                <div class="row">
+                    <a class="" href="{% url 'account_login' %}">
+                        {% if chapter.chapter == chapter.name %}
+                        <span class="p-2 mt-2 badge badge-white text-black rounded-5 border border-dark">{{ chapter.chapter }}</span>
+                        {% else %}
+                        <span class="p-2 mt-2 badge badge-white text-black rounded-5 border border-dark">{{ chapter.chapter }} {{ chapter.name }}</span>
+                        {% endif %}
+                    </a>
+                </div>
+                {% endif %}
+                {% endif%}
+                {% endfor %}
+                    <div class="col{% if s %}-12 mt-2{% endif %}">
+                        <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 mt-5">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
                         </span>
-                        <span class="text-uppercase">Other books</span>
-                    </a>
+                            <span class="text-uppercase">Other books</span>
+                        </a>
+                    </div>
+                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
                 </div>
-                <input type="hidden" name="redirect_url" value="{{ request.path }}">
             </div>
         </div>
     </div>

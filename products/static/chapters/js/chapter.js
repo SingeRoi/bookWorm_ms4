@@ -1,4 +1,7 @@
-
+/*
+    Changes the border color of chapter spans from dark to warning.
+    Attaches a modal to each chapter span.
+*/
 
 var links = document.getElementsByClassName("chaptergroup");
 

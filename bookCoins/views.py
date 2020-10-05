@@ -195,36 +195,34 @@ def buy_chapter(request):
 
         profile = UserProfile.objects.get(user=request.user)
         chapter = get_object_or_404(Chapter, pk=chapterid)
+        if chapter.price <= profile.bookcoins:
 
-        order_chapter_form_data = {
-            'user_profile': profile,
-        }
+            order_chapter_form_data = {
+                'user_profile': profile,
+            }
 
-        order_chapter_form = OrderChapterForm(order_chapter_form_data)
-        if order_chapter_form.is_valid():
-            order = order_chapter_form.save()
-            order_line_item = OrderChapterLineItem(
-                order=order,
-                chapter=chapter,
-                chapter_no=chapter.chapter,
-                book= chapter.book,
-                lineitem_total=chapter.price,
-            )
-            order_line_item.save()
-            # Attach the user's profile to the order
-            order.user_profile = profile
-            order.save()
+            order_chapter_form = OrderChapterForm(order_chapter_form_data)
+            if order_chapter_form.is_valid():
+                order = order_chapter_form.save()
+                order_line_item = OrderChapterLineItem(
+                    order=order,
+                    chapter=chapter,
+                    chapter_no=chapter.chapter,
+                    book= chapter.book,
+                    lineitem_total=chapter.price,
+                )
+                order_line_item.save()
+                # Attach the user's profile to the order
+                order.user_profile = profile
+                order.save()
 
-        # Save the user's coins
-        coin_data = {
-            'bookcoins': profile.bookcoins - chapter.price,
-        }
-        user_coin_form = UserProfileForm(coin_data, instance=profile)
-        if user_coin_form.is_valid():
-            user_coin_form.save()
-
-    messages.success(request, f'Order successfully processed! \
-        You bought {chapter.chapter}')
+            # Save the user's coins
+            coin_data = {
+                'bookcoins': profile.bookcoins - chapter.price,
+            }
+            user_coin_form = UserProfileForm(coin_data, instance=profile)
+            if user_coin_form.is_valid():
+                user_coin_form.save()
 
 
     return redirect(reverse('product_detail', args=[productid]))
