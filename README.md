@@ -1,12 +1,30 @@
-[Link to Deployed Website](https://testforbookworm.herokuapp.com)
+[Link to Deployed Website](https://singeroi-bookworm.herokuapp.com)
 
 # Code Institute Milestone Project 4
-## A Full Stack Framework with Django 
+## bookWorm A Full Stack Framework with Django 
 
-### <a style="font=Leckerli+One">  bookWorm </a> we love a good read
+###   @bookWorm we love a good read
+
+## About bookWorm
 
 ## Site purpose
+ 
+This an e-commerce site for promotion of inclusive new literature in the competitive e-novels/comics market. 
+Readers are looking for varied content but especially for enovels and eManga.
+Site users can browse titles according to type (book, comic) or genre (sci-fi, fantasy or historical). After registration and login users can read sample chapters and then choose to purchase further chapters or a subscription. Users can then review the products they buy. Users can also submit their own works for online publication and/or may offer to act as translators for new works users will receive payment for this. 
 
+## Demo
+
+![Project Demo](readme images/landingtoachapter.gif)
+
+### Design choices
+The design process began with the bookWorm brand logo which uses a strong blue. From this to provide a fresh look I chose a palette based on shades of blue and green selected using the palette tool at [Coolors](https://coolors.co/). Many aspects of the design use bootstrap components for consistency but to give a modern look they have been restyled as, for example, the navbar toggler button which has no border in order to give it a more contemporary look. The font choice for the logo, was determined by experimentation using [Fontastic]() and provides an appealing visual pun.  The design seeks to provide a visually consistent, responsive and easy to navigate user experience.
+
+![landing page](readme%20images/bookWorm_landing.png)
+
+The layout of the navbar, home and product pages use the format of the Code Instiute BoutiqueAdo project. I chose to retain the format of the 4 navbar buttons including the 'Show Titles' dropdown which provides functions that could be seen as redundant with that of the 'sort by menu'. However the 'sort by menu' appears only on the product pages and therefore I felt it was valuable to users to have the ability to be able to perform the wider searches provided by this dropdown directly from other locations especially from the landing page. 
+
+## UX
 This is a test of an English language webnovel publishing site of a type popular in China and of growing popularity elsewhere. The owner's purpose is to provide a source of new eNovels and eManga as well as other online publications that will be if interest to readers. The owner will gather income from purchase of access to publications and individual chapters are usually provided as the main products. Titles are often published in a serialised form with readers awaiting the next installment. Typical access is via mobile devices. The site provides a basic reader function to access content linked to registered user accounts. Some content is normally provided for free as a taster and the site free content is available to any reader. 
 
 The owner also wishes to recruit writers attracted to contribute their work to the genres onsite to become providers of future content as well as translators to provide English and other language content. These users will be paid a fee for their work on paid content. 
@@ -14,40 +32,16 @@ The owner also wishes to recruit writers attracted to contribute their work to t
 Users purchase titles by purchasing credit in their profile on the site using a card (in reality usually methods such as WeChat or Alipay dominate). These then allow purchase of chapters. The presence of credit encourages users to keep returning to the site. Other payment schemes such as subscriptions exist but these are outside the scope of this demo project 
 
 
-## About bookWorm. 
-
-Site users can browse titles according to type (book, comic) or genre (sci-fi, fantasy or historical). After registration and login users can read sample chapters and then choose to purchase further chapters or a subscription. Users can then review the products they buy. Users can also submit their own works for online publication and/or may offer to act as translators for new works users will receive payment for this. 
-
-## Demo
-
-![Project Demo](/UXD/Demo.png)
-### Design choices
-The design process began with the bookWorm brand logo which uses a strong blue. From this to provide a fresh look I chose a palette based on shades of blue and green selected using the palette tool at [Coolors)(https://coolors.co/). Many aspects of the design use bootstrap components for consistency but to give a modern look they have been restyled as, for example, the navbar toggler button which has no border in order to give it a more contemporary look. The font choice for the logo, was determined by experimentation using [Fontastic]() and provides an appealing visual pun.  The design seeks to provide a visually consistent, responsive and easy to navigate user experience.
-
-![landing page](readme%20images/bookWorm_landing.png)
-
-The layout of the navbar, home and product pages use the format of the Code Instiute BoutiqueAdo project. I chose to retain the format of the 4 navbar buttons including the 'Show Titles' dropdown which provides functions that could be seen as redundant with that of the 'sort by menu'. However the 'sort by menu' appears only on the product pages and therefore I felt it was valuable to users to have the ability to be able to perform the wider searches provided by this dropdown directly from other locations especially from the landing page. 
-
-### Outstanding design issues
-
-The following are design issues I would like to address further if time allowed
-
-* appearance of chapter buttons on product_detail pages to set all to the width of the widest button
-* apply corresponding shading to Rating/My rating stars
-* complete styling of ereader
-  
-
-## UX
-
-This an e-commerce site for promotion of inclusive new literature in the competitive e-novels/comics market. 
-Readers are looking for varied content but especially for enovels and eManga.  
 
 **Potential features to include:**
-* An online store focused on selling new eLiterature
+
+Considering the needs of possible site users identified these features:
+
+* A store-front to showcase a wide range pof eLiterature
 
 * Allow users to search items based on various fields, e.g. type, genre, author, rating
 
-* Allow users to filter items based on title, genre, language, rating
+* Allow users to filter items based on title, genre, rating
 
 * Allow users to see the price, image, ratings and other basic details of titles on the search page
 
@@ -61,7 +55,7 @@ Readers are looking for varied content but especially for enovels and eManga.
 
 * Allow registered users to rate titles, only if they purchased them
 
-* Include pagination and/or other dynamic and responsive display actions.
+* Include pagination and/or other dynamic and responsive display actions to deal with large datasets.
 
 
 ### User Stories
@@ -100,11 +94,11 @@ This site is intended for readers and creators of new eNovels, eComics and other
 
 ### Design
 
-I wanted to style the website with a fresh, inviting colour palette. It seekd to promote easy navigation through consistent use f well recognised icons in standard locations. In partcular when hadling very large numbers of products and large blocks of text there is a need to provide suitable navigation buttons that react responsively. 
+I wanted to style the website with a fresh, inviting colour palette. The use of intuitive placement of buttons promotes easy navigation as does consistent use of well recognised icons. Use of dropdowns and suitable navigation that alters responsively and buttons and badges that react to users interactively assists the UX.
 
 #### Colour Scheme
 
-![Colour Palette](UXD/colour-palette.png)
+![Colour Palette](readme images/bookWorm palette.png)
 
 | Hex Colour Code   |  RGB   | Description   | 
 | ------------- |-------------|:-------------:| 
@@ -121,15 +115,20 @@ I wanted to style the website with a fresh, inviting colour palette. It seekd to
 
 
 #### Typography
-Fonts chosen were
+The bookWorm logo uses Leckerli One and elsewhere the fonts chosen was lato as it suited the simplicity and clarity of design of this project.
 
 #### Icons
 
 I used [Font Awesome](https://fontawesome.com/icons?d=gallery) for the icons in this project
 
 ### Wireframes
- 
-![Here are the intitial wireframes](UXD)
+
+ Here are the intitial wireframes:
+![Landing and base](readme images/bookWorm.png)
+
+- [Profile](readme images/bookWorm profile.png) 
+- [Title detail](readme images/bookWorm product detail.png)
+- [Mobile](readme images/bookWorm_mobile_wireframes.jpg)
 
 ## Entity Relationship Diagram for bookWorm
 
@@ -143,21 +142,23 @@ I used [Font Awesome](https://fontawesome.com/icons?d=gallery) for the icons in 
 - register and set up an account 
 - reset their password from the login page 
 - view all titles via the navbar.
-- return to the homepage via th navbar
+- return to the homepage via the navbar and from each page
 - view individual titles
 - select the specific title type, genre, via a dropdown.
 - search by title, rating, author, genre
-- leave a star rating for a title (if they have purchased it)
+- leave a star rating for a title
 - see the average star rating for a specific product in the detail page 
-- edit  posts if they are the admin superuser
-- offer work for epub, translation, perform translation
+- edit titles if they are the admin superuser
 - pay for products through Stripe (as this is a fictional site, it only processes test card payments.)
-- use pagination to move through the purchased publications
-- manage my purchases, subscriptions, payments
+- use a reader to move through the purchased publications
+- manage my purchases, payments
 
 ##Limitations of this test site
 
-The site content was harvested from datasets provided by Kaggle. The majority of titles have no chapters available and so a user can only browse as far as the title detail page. Though there is an add to bag link to purchase titles 
+The site content was harvested from datasets provided by [Kaggle](https://www.kaggle.com/). The majority of titles were from a GoodReads data set chosen as it had book cover images (though unfortunately of low resolution/quality), categories and ratings. However, it had no book descriptions so I added text to fill this field for the majority of titles, it is also notable that the dataset includes items that are not books and that many of the categories given are questionable. These books had no chapters associated with them so a user can only browse as far as the title detail page. 
+
+In order to model the user experience of accessing and buying chapters a second [Kaggle](https://www.kaggle.com/) dataset of Gothc novel text was harvested and selected chapters were manually separated and combined with other data to provide a complemetary dataset. 
+ 
 
 ### Comments on coding required
 
@@ -168,28 +169,14 @@ Then I used a method to post data from the frontend to the backend to pass the u
 I then set this default value to 5 which created PaymentIntent successfully. However, when posting user input values to the backend this created addtitional PaymentIntent objects so that submitting the form led to only the default PaymentIntent being charged. 
 
 To overcome this instead of creating a PaymentIntent object each time the user input was updated I overwrote the amount in the existing object.
-
- 
-
-	snippet here
     	
 On migration to Heroku I found a bug in Stripe functionality so that topupcoin requests sometimes created multiple order records in the user profile without crediting the user account. This was not seen on locally run versions of the site. I have not had sufficient time to identify any possible cause.
 
-		
-	
-	
-	
-### Features left to implement
 
-* eReader view next/previous chapter function will navigate between purchased chapters but will not allow navigation to free chapters. I have not had time to implement code for this.
-*
-*
-
-## Technologies Used ? see previous readme MS3
 
 ## Technologies Used
 
-The website is designed using following technologies:
+The website was designed using following technologies:
 
 -   [HTML5](https://en.wikipedia.org/wiki/HTML5) is a software solution stack that defines the properties and behaviours of web page content
 -   [CSS3](http://www.css3.info/) Cascading Style Sheets (CSS) is a style sheet language used for describing the look and formatting of a document written in a markup
@@ -247,7 +234,14 @@ Further details on all Python packages used on this project can be found in the 
 
 
 ## Testing
+
+####Advice on testing 
+To follow a complete user experience story it is necessary to select one of the Gothic novels category as these provide chapters for purchase which can be read in the rudimentary reader provided. Other titles cannot be purchased. 
+ 
 ### User story testing  
+
+This was conducted on a number of devices available including mobile phones, tablets and laptops. Other devices were simulated using developer tools in Chrome and Firefox browsers to confirm responsiveness. The site functions well in all browsers tested, Firefox, Chrome, Safari and Edge and Ecosia.
+
 
 Checks that a user can:
 * visit site without registration 
@@ -297,6 +291,17 @@ Checks that a user can:
 	- see valid input updates to title records?
 - can a superuser delete a title?
 
+### Automated testing
+Automated tests were performed as follows:
+
+#### Javascript
+* A Jasmine test is included to test update.js in bookCoins app to check whether the update() is called.
+
+* The Jasmine test can be found in jasminetest folder. Django tests can be found in tests.py in Profiles and Products apps.
+
+#### Django
+* A Django test is used to test if models defined in Products and Profiles apps can be created and if response.status_code returns correct codes.
+* Use python3 manage.py test (myapp)
 
 
 ### Validators
@@ -305,19 +310,39 @@ Checks that a user can:
 
 [W3C Markup Validation Service]( https://validator.w3.org/)
 
+Code was checked and minor typos/omissions corrected.
 
 
 #### CSS
 
 [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
+Code was checked and minor typos/omissions corrected.
 
 #### JavaScript
 
 [JSHint]( https://jshint.com/)
+Code was checked and minor/typos omissions corrected.
 
 #### Python
 
 [PEP8]( http://pep8online.com/)
+
+
+### Outstanding design issues
+
+The following are design issues I would like to address further if time allowed
+
+* appearance of chapter buttons on product_detail pages to set all to the width of the widest button
+* apply corresponding shading to Rating/My rating stars
+* styling/location of found, category and search box on the product page needs revision
+* complete styling of ereader/replace with an out-of-the-box open source reader
+
+### Features left to implement
+
+* eReader view next/previous chapter function will navigate between purchased chapters but will not allow navigation to free chapters. I have not had time to implement code for this.
+* restricting user rating to purchased products
+
+
 
 
 ## Deployment
@@ -328,7 +353,10 @@ the sites are;
 
     Github repository   https://github.com/SingeRoi/bookWorm_ms4
 
-    Heroku              https://testbookworm.herokuapp.com
+    Heroku              https://singeroi-bookworm.herokuapp.com
+    
+                        For testing purposes Superuser access is available for user bookworm
+                        password: bbbb1234
 
 ###Heroku Deployment 
 
@@ -336,60 +364,47 @@ To deploy bookWorm to heroku, use the following steps:
 
     Transfer database to postgres by:
     
+        Gets default in DATABASES in settings.py to use dj_database_url to parse a postgres link
     
 
     Create a requirements.txt file using the terminal command 
     
-            $ pip3 freeze > requirements.txt.
+            $ pip3 freeze --local >> requirements.txt.
 
     Create a Procfile with the terminal command 
     
-            $ echo web: python3 app.py > Procfile.
+            $ echo web: gunicorn bookWorm.wsgi:application > Procfile.
 
     git add and git commit the new requirements and Procfile and then git push the project to GitHub for control.
 
-    Create a new app on the Heroku website by clicking the "New" button in your dashboard. Give it a name and set the region to Europe.
-    
-    On your terminal type 
-    
-        $ heroku login
-    
-        $ mkdir vindeployment
-        
-        $ cd vindeployment
-        
-        $ heroku git:remote -a .vinsauvage
-        
-    proceed as usual with 
-        
-        $ git add .
-        
-        $ git commit -m "message"
-        
-        $ git push heroku master
+    Create a new app on the Heroku website by clicking the "New" button in my dashboard. Give it a name and set the region to Europe.
     
     
-
-    Confirm the linking of the heroku app to the correct GitHub repository.
+    In the heroku dashboard, click "Deploy".
+    
+        In the "Manual Deployment" section of this page, connect my Github to heroku, search for bookWorm_ms4, choose master and deploy the branch and then click "Deploy Branch".
+    
+        The site is now successfully deployed.
+    
 
     In the heroku dashboard for the application, click on "Settings" > "Reveal Config Vars".
 
     Set the following config vars:
 
-Key 	Value
-DEBUG 	FALSE
-IP 	0.0.0.0
-MONGO_URI 	mongodb+srv://<username>:<password>@<cluster_name>-qghgc.mongodb.net/<database_name>?retryWrites=true&w=majority
-PORT 	5000
-SECRET_KEY 	<your_secret_key>
+    Key 	Value
 
-    To get your 
+    SECRET_KEY 	<my_secret>
+    DATABASE_URL 	<my_secret>
+    EMAIL_HOST_PASS 	<my_secret>
+    EMAIL_HOST_USER 	<my_secret>
+    STRIPE_PUBLIC_KEY 	<my_secret>
+    STRIPE_SECRET_KEY 	<my_secret>
+    STRIPE_WH_SECRET 	<my_secret>
+    
+    In the live version, these values should be set in Config Vars area to ensure the security.
+    The debug mode is set to be true on development version but false on the live version.
 
-    In the heroku dashboard, click "Deploy".
-
-    In the "Manual Deployment" section of this page, made sure the master branch is selected and then click "Deploy Branch".
-
-    The site is now successfully deployed.
+   
 
 
 
@@ -397,13 +412,11 @@ SECRET_KEY 	<your_secret_key>
 
 ### Media
 
-The 
-
 * Inspiration for the bookWorm logo came from font choices at [Favicon.io](https://favicon.io/)
-* I found the book dataset with images and ratings at [kaggle.com]() these were manually filtered to exclude some categories, the csv file was then formatted to JSON using  a snippet found (here](); the [gothic novel]() dataset was manually formatted to...
-* Various eNovel sites were consulted for inspiration including:
+* I found the book dataset with images and ratings at [Kaggle](https://www.kaggle.com/) these were manually filtered to exclude some categories, the csv file was then formatted to JSON. The [gothic novel]() dataset was manually formatted.
+* Various eNovel sites were consulted for inspiration such as the very popular [webnovel.com](https://www.webnovel.com/)
 
-* The base image is from [Pexels]()
+* The base image is from [Pexels](https://www.pexels.com/fr-fr/). 
 
 * The project ERD was produced following instructions from [Wade Williams](https://wadewilliams.com/technology-software/generating-erd-for-django-applications/) but modified for python3. Output was visualized as a png file at [onlineconvertfree.com](https://onlineconvertfree.com/convert-format/dot-to-png/).
 
@@ -417,3 +430,9 @@ https://docs.djangoproject.com/en/3.1/topics/pagination/
 I also received tips on snippets of my code through [Stack Overflow](https://stackoverflow.com/), [CodePen]( https://codepen.io/) and [W3Schools](https://www.w3schools.com/).
 
 ### Acknowledgements
+
+Thanks to my mentor Ignatius Ukwuoma who was greatly responsible for inspiring me to try to tackle it in such a short time. I must also thank my wife for her enormous forebearance during this project.
+
+##Disclaimer
+
+This is for educational use.

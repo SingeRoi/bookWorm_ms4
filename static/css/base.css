@@ -185,7 +185,7 @@ body {
 }
 
 .amber-text {
-    color: #f7e095;
+    color: # ;
 }
 
 .fixed-amber-text {
@@ -243,7 +243,7 @@ body {
 
 .btn-logout {
     margin-bottom: 1em;
-    border-radius:5 px;
+    border-radius: 5px;
 }
 
 .message-container,
@@ -315,7 +315,7 @@ body {
 
     .container-product-titles {
         display: flex;
-        flex-flow: wrap
+        flex-flow: wrap;
         flex-direction: row;
         justify-content: center;
     }
