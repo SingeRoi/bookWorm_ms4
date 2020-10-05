@@ -124,7 +124,7 @@ I used [Font Awesome](https://fontawesome.com/icons?d=gallery) for the icons in 
 ### Wireframes
 
  Here are the intitial wireframes:
-![Landing and base](https://github.com/SingeRoi/bookWorm_ms4/blob/master/readme%20images/bookWorm_landing.png)
+![Landing and base](https://github.com/SingeRoi/bookWorm_ms4/blob/master/readme%20images/bookWorm.png)
 
 - [Profile](https://github.com/SingeRoi/bookWorm_ms4/blob/master/readme%20images/bookWorm%20profile.png) 
 - [Title detail](https://github.com/SingeRoi/bookWorm_ms4/blob/master/readme%20images/bookWorm%20product%20detail.png)
@@ -230,8 +230,7 @@ Further details on all Python packages used on this project can be found in the 
 
 ### Other resources
 
-[Gifox](https://gifox.io/) - I used Gifox to record the website demo for my README file. I recorded it off the website [Am I Responsive](ect%2F#)http://ami.responsivedesign.is/?url=https]
-
+[Gifox](https://gifox.io/) - I used Gifox to record the website demo for my README file. 
 
 ## Testing
 
