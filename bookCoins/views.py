@@ -12,7 +12,6 @@ from products.models import Product, Chapter
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 
-import json
 import stripe
 
 
@@ -80,9 +79,7 @@ def topup_coins(request):
             # Save the info to the user's profile if all is well
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('topup_success', args=[order.order_number]))
-        else:
-            messages.error(request, 'There was an error with your form. \
-                Please double check your information.')
+
     else:
         # Attempt to prefill the form with any info the user maintains in their profile
         if request.user.is_authenticated:
@@ -115,10 +112,6 @@ def topup_coins(request):
         stripe.api_key = stripe_secret_key
         stripe.PaymentIntent.modify(pid, amount=stripe_total)
         client_secret = pid
-
-    if not stripe_public_key:
-        messages.warning(request, 'Stripe public key is missing. \
-            Did you forget to set it in your environment?')
 
     context = {
         'order_form': order_form,
@@ -165,10 +158,6 @@ def topup_success(request, order_number):
             user_profile_form = UserProfileForm(profile_data, instance=profile)
             if user_profile_form.is_valid():
                 user_profile_form.save()
-
-    messages.success(request, f'Order successfully processed! \
-        Your order number is {order.order_number}. A confirmation \
-        email will be sent to {order.email}.')
 
     if 'current_coin' in request.session:
         del request.session['current_coin']

@@ -4,7 +4,7 @@ html {
 }
 /* options to ensure background_image covers page and remains centered */
 body {
-    background: url('../../media/homepage_background_pexels-cottonbro-4865739.jpg') no-repeat center center fixed;
+    background: url('https://images.pexels.com/photos/4865739/pexels-photo-4865739.jpeg') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
     color: #555;

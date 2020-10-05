@@ -49,10 +49,12 @@ class Chapter(models.Model):
         return self.sku
 
 class UserRatings(models.Model):
+    class Meta:
+        verbose_name_plural = 'User Ratings'
     book = models.ForeignKey('Product', null=True, blank=True, on_delete=models.SET_NULL)
     user = models.ForeignKey(UserProfile, null=True, blank=True, on_delete=models.SET_NULL, related_name='user_rating')
     user_rating = models.DecimalField(max_digits=6, decimal_places=2, default=0)
 
 
     def __str__(self):
-        return self.user_rating
+        return self.book.name
