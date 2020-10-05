@@ -53,7 +53,7 @@ def topup_coins(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
-    current_coin = int(request.session.get('current_coin', 5))
+    current_coin = float(request.session.get('current_coin', 5))
     pid = request.session.get('pid')
     stripe_total = round(current_coin * 100)
 
@@ -74,7 +74,6 @@ def topup_coins(request):
         order_form = OrderCoinForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
-            #pid_in_form = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
             if pid:
                 order.save()

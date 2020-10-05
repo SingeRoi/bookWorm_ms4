@@ -24,7 +24,7 @@ Site users can browse titles according to type (book, comic) or genre (sci-fi, f
 ### Design choices
 The design process began with the bookWorm brand logo which uses a strong blue. From this to provide a fresh look I chose a palette based on shades of blue and green selected using the palette tool at [Coolors)(https://coolors.co/). Many aspects of the design use bootstrap components for consistency but to give a modern look they have been restyled as, for example, the navbar toggler button which has no border in order to give it a more contemporary look. The font choice for the logo, was determined by experimentation using [Fontastic]() and provides an appealing visual pun.  The design seeks to provide a visually consistent, responsive and easy to navigate user experience.
 
-[landing page with 'Show titles' dropdown]()
+![landing page](readme%20images/bookWorm_landing.png)
 
 The layout of the navbar, home and product pages use the format of the Code Instiute BoutiqueAdo project. I chose to retain the format of the 4 navbar buttons including the 'Show Titles' dropdown which provides functions that could be seen as redundant with that of the 'sort by menu'. However the 'sort by menu' appears only on the product pages and therefore I felt it was valuable to users to have the ability to be able to perform the wider searches provided by this dropdown directly from other locations especially from the landing page. 
 
@@ -120,7 +120,11 @@ I used [Font Awesome](https://fontawesome.com/icons?d=gallery) for the icons in 
 
 ### Wireframes
  
-[Here are the intitial wireframes](UXD)
+![Here are the intitial wireframes](UXD)
+
+## Entity Relationship Diagram for bookWorm
+
+!![bookWormERD](bookWorm%20ERD%20output.png)
 
 ## Features
 
@@ -134,9 +138,9 @@ I used [Font Awesome](https://fontawesome.com/icons?d=gallery) for the icons in 
 - view individual titles
 - select the specific title type, genre, via a dropdown.
 - search by title, rating, author, genre
-- review/leave a star rating for a title 
+- leave a star rating for a title (if they have purchased it)
 - see the average star rating for a specific product in the detail page 
-- approve comments and reviews and edit blog posts if they are the admin superuser
+- edit  posts if they are the admin superuser
 - offer work for epub, translation, perform translation
 - pay for products through Stripe (as this is a fictional site, it only processes test card payments.)
 - use pagination to move through the purchased publications
@@ -156,9 +160,11 @@ I then set this default value to 5 which created PaymentIntent successfully. How
 
 To overcome this instead of creating a PaymentIntent object each time the user input was updated I overwrote the amount in the existing object.
 
+ 
 
 	snippet here
     	
+On migration to Heroku I found a bug in Stripe functionality so that topupcoin requests sometimes created multiple order records in the user profile without crediting the user account. This was not seen on locally run versions of the site. I have not had sufficient time to identify any possible cause.
 
 		
 	
@@ -166,11 +172,27 @@ To overcome this instead of creating a PaymentIntent object each time the user i
 	
 ### Features left to implement
 
-*
+* eReader view next/previous chapter function will navigate between purchased chapters but will not allow navigation to free chapters. I have not had time to implement code for this.
 *
 *
 
 ## Technologies Used ? see previous readme MS3
+
+## Technologies Used
+
+The website is designed using following technologies:
+
+-   [HTML5](https://en.wikipedia.org/wiki/HTML5) is a software solution stack that defines the properties and behaviours of web page content
+-   [CSS3](http://www.css3.info/) Cascading Style Sheets (CSS) is a style sheet language used for describing the look and formatting of a document written in a markup
+-   [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/About_JavaScript) JavaScript is a light-weight, interpreted, object-oriented programming language used primarily for making interactive elements on web pages and applications. It was initially only used for browsers and web pages, but it has spread to many other environments and applications
+-   [jQuery](https://code.jquery.com/jquery-3.2.4.js) a Javascript library allowing ease of coding and manipulation of the DOM
+-   [Python](https://www.python.org/) a versatile coding language providing wide range of modular resources
+-   [GitHub](https://github.com/) for version control during development
+-   [Heroku](https://id.heroku.com/) platform for hosting deployed website
+-   [FontAwesome library](https://fontawesome.com) popular set of icons for use in CSS, many free, this site uses v5.2.0
+-   [Bootstrap](https://getbootstrap.com/docs/4.3/getting-started/download/) Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development - provides new functions and can be accessed via CDN rather than using a library
+-   [Google Fonts](https://fonts.google.com/) source of wide range of convenient to use fonts
+
 #### Frameworks
 
 * [Bootstrap](https://getbootstrap.com/) - 
@@ -180,16 +202,16 @@ Bootstrap is a conventient a great framework and easy to use.
 The project uses JQuery to simplify DOM manipulation.
 
 * [Django](https://www.djangoproject.com/) - 
-Django is a free and open-source web framework that I've used to render the back-end Python with the front-end Bootstrap.
+Django is a free and open-source web framework that renders the back-end Python with the front-end Bootstrap.
 
 * [Intelij]()- this was the IDE used for this project
 * [Github](https://github.com/) - Github was used as remote storage and with Git for version control
-* [FontAwesome](https://fontawesome.com/) - Font Awesome provides a convenient library of icons. I used this library for any icons.
+* [FontAwesome](https://fontawesome.com/) - Font Awesome provides a convenient library of icons. I used this library for icons to enhance UX by providing ease of recognition of function.
 * [Google Fonts](https://fonts.google.com/) - There is a great selection of fonts in the Google Fonts library, some of which I used in my project.
 
 ### Frontend Technologies
 
-* [HTML5](https://en.wikipedia.org/wiki/HTML) - HTML was used to control the layout and the structure of the project.
+* [HTML5](https://en.wikipedia.org/wiki/HTML) -  a software solution stack that defines the properties and behaviours of web page content - used to control the layout and the structure of the project.
 * [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) - Cascading Style Sheets are used to describe the appearance of a website and I used it to make my website look appealing to the user.
 * [JavaScript](https://www.javascript.com/) - Javascript was used to introduce the interactive elements to the project.
 * [JQuery](https://jquery.com/) - jQuery is the primary JavaScript functionality.
@@ -366,16 +388,18 @@ SECRET_KEY 	<your_secret_key>
 
 The 
 
-Inspiration for the bookWorm logo came from font choices at [Favicon.io](https://favicon.io/)
-I found the book dataset with images and ratings at [kaggle.com]() these were manually filtered to exclude some categories, the csv file was then formatted to JSON using  a snippet found (here](); the [gothic novel]() dataset was manually formatted to...
-Various eNovel sites were consulted for inspiration including:
+* Inspiration for the bookWorm logo came from font choices at [Favicon.io](https://favicon.io/)
+* I found the book dataset with images and ratings at [kaggle.com]() these were manually filtered to exclude some categories, the csv file was then formatted to JSON using  a snippet found (here](); the [gothic novel]() dataset was manually formatted to...
+* Various eNovel sites were consulted for inspiration including:
 
-The base image is from [Pexels]()
+* The base image is from [Pexels]()
+
+* The project ERD was produced following instructions from [Wade Williams](https://wadewilliams.com/technology-software/generating-erd-for-django-applications/) but modified for python3. Output was visualized as a png file at [onlineconvertfree.com](https://onlineconvertfree.com/convert-format/dot-to-png/).
 
 ### Code
-*Product page pagination uses the code for page view pagination from
+* Product page pagination uses the code for page view pagination from
 https://docs.djangoproject.com/en/3.1/topics/pagination/
-*
+* 
 
 I also received tips on snippets of my code through [Stack Overflow](https://stackoverflow.com/), [CodePen]( https://codepen.io/) and [W3Schools](https://www.w3schools.com/).
 
