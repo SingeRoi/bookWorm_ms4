@@ -15,7 +15,7 @@ Site users can browse titles according to type (book, comic) or genre (sci-fi, f
 
 ## Demo
 
-![Project Demo](readme images/landingtoachapter.gif)
+![Project Demo](https://github.com/SingeRoi/bookWorm_ms4/blob/master/readme%20images/landingtoachapter.gif)
 
 ### Design choices
 The design process began with the bookWorm brand logo which uses a strong blue. From this to provide a fresh look I chose a palette based on shades of blue and green selected using the palette tool at [Coolors](https://coolors.co/). Many aspects of the design use bootstrap components for consistency but to give a modern look they have been restyled as, for example, the navbar toggler button which has no border in order to give it a more contemporary look. The font choice for the logo, was determined by experimentation using [Fontastic]() and provides an appealing visual pun.  The design seeks to provide a visually consistent, responsive and easy to navigate user experience.
@@ -124,11 +124,11 @@ I used [Font Awesome](https://fontawesome.com/icons?d=gallery) for the icons in 
 ### Wireframes
 
  Here are the intitial wireframes:
-![Landing and base](readme images/bookWorm.png)
+![Landing and base](https://github.com/SingeRoi/bookWorm_ms4/blob/master/readme%20images/bookWorm_landing.png)
 
-- [Profile](readme images/bookWorm profile.png) 
-- [Title detail](readme images/bookWorm product detail.png)
-- [Mobile](readme images/bookWorm_mobile_wireframes.jpg)
+- [Profile](https://github.com/SingeRoi/bookWorm_ms4/blob/master/readme%20images/bookWorm%20profile.png) 
+- [Title detail](https://github.com/SingeRoi/bookWorm_ms4/blob/master/readme%20images/bookWorm%20product%20detail.png)
+- [Mobile](https://github.com/SingeRoi/bookWorm_ms4/blob/master/readme%20images/bookWorm_mobile_wireframes.jpg)
 
 ## Entity Relationship Diagram for bookWorm
 
