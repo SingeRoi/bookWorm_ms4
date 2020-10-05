@@ -45,13 +45,12 @@ INSTALLED_APPS = [
     'home',
     'products',
     'django_extensions',
-    # 'bag',
     'profiles',
     'bookCoins',
-    'mathfilters',
 
     # Other
     'crispy_forms',
+    'mathfilters',
 ]
 
 MIDDLEWARE = [

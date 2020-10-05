@@ -147,6 +147,20 @@ body {
     border-color: #00f !important;
 }
 
+.badge-blue:hover {
+    color: #D8FDDA !important;
+    background-color: #00f !important;
+    border-color: #00f !important;
+}
+
+.badge-white:hover {
+    background-color: #c1be12 !important;
+    border-color: #c1be12 !important;
+}
+
+.text-blue {
+    color: #00f !important;
+}
 
 /* star ratings display simplified from method 5 from https://stackoverflow.com/questions/39838547/star-shaped-progress-bars-in-css-html-javascript*/
 
@@ -163,19 +177,16 @@ body {
   z-index: 0;
 }
 
-/* styles user-rating popover input from https://mdbootstrap.com/snippets/jquery/bartek-malanowski/451394#css-tab-view */
-/*.rating-input {
-    width: fit-content !important;
-    left: 100px !important;
-}*/
+/* styles user-rating selector input modified from https://mdbootstrap.com/snippets/jquery/bartek-malanowski/451394#css-tab-view */
+
 .rate-popover {
     cursor: pointer;
+    font-size: .75rem !important;
 }
 
 .amber-text {
     color: #f7e095;
 }
-
 
 .fixed-amber-text {
     color: #f7e095;
@@ -245,6 +256,11 @@ body {
     color: #D8FDDA;
 }
 
+.modal-buy-btn {
+    position: relative;
+    top: 55px;
+    left: 15px;
+}
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */

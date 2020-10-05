@@ -20,25 +20,7 @@ def profile(request):
         'profile': profile,
         'on_profile_page': True
     }
-    '''do i need an if statement from profiles view.py?
-        if request.method == 'POST':
-        form = UserProfileForm(request.POST, instance=profile)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Profile updated successfully')
-        else:
-            messages.error(request, 'Update failed. Please ensure the form is valid.')
-    else:
-        form = UserProfileForm(instance=profile)
-    orders = profile.orders.all()
 
-    template = 'profiles/profile.html'
-    context = {
-        'form': form,
-        'orders': orders,
-        'on_profile_page': True
-    }
-    '''
     return render(request, 'profiles/profile.html', context)
 
 @login_required
