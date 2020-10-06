@@ -1,0 +1,256 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1036{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.18362}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang12 [Link to Deployed Website](https://     herokuapp.com)\par
+\par
+# Code Institute Milestone Project \par
+## Full Stack Framework with Django \par
+\par
+### we love a good read\par
+\par
+\par
+\par
+##About bookWorm. \par
+\par
+This a prototype e-commerce site for promotion of inclusive new literature in the competitive e-novels/comics market. \par
+\par
+Site users can browse titles according to type (book, comic) or genre (sci-fi, fantasy or historical). After registration and login users can read sample chapters and then choose to purchase further chapters or a subscription. Users can then review the products they buy. Users can also submit their own works for online publication and/or may offer to act as translators for new works users will receive payment for this. \par
+\par
+## Demo\par
+\par
+![Project Demo](/UXD/Demo.png)\par
+### Design choices\par
+The beginning of the design process was the bookWorm brand logo which uses a strong blue. From this to provide a fresh look I chose a palette based on shades of blue and green selected using the palette tool at [Coolors)(). Many aspects of the design use bootstrap components for consistency but to give a modern look they have been restyled as, for example, the navbar toggler button which has no border in order to give it a more contemporary look. The font choice for the logo, was determined by experimentation using [Fontastic]() and provides an appealing visual pun.  The design seeks to provide a visually consistent, responsive and easy to navigate user experience.\par
+## UX\par
+\par
+I looked at the other project ideas given by the Code Institute and worked them into my idea: \par
+\par
+**Potential features to include:**\par
+* An online store focused on selling new eLiterature\par
+\par
+* Allow users to search items based on various fields, e.g. type, genre, author, rating\par
+\par
+* Allow users to filter items based on title, genre, language, rating\par
+\par
+* Allow users to see the price, image, ratings and other basic details of titles on the search page\par
+\par
+* When viewing a title, users would be able to identify its content and suitability, read a sample, purchase more material, leave a rating\par
+\par
+* Allow users to securely purchase title chapters, allow authors/translators to receive payments\par
+\par
+* Users have to be registered to purchase, rate, create or translate \par
+\par
+* Allow registered users to write reviews about the titles, only if they purchased them\par
+\par
+* Include pagination and/or other dynamic and responsive display actions.\par
+\par
+\par
+### User Stories\par
+\par
+This site is intended for readers and creators of new eNovels, eComics and other literary works in the growing foreign language publications market of east Asia. These publications re typically provided on a chapter by chapter basis offereing novel challenges in terms of dealing with management and presentation of products.\par
+**_"As administrator I would like to"_**\par
+* easily manage site to provide titles of interest in an attractive format\par
+* attract new titles and provide a mechanism for translation of new works \par
+ * generate ongoing interest in the site & build a reader/writer community\par
+* make a profit from selling access to chapters and/or subscriptions to titles\par
+* securely collect/make payments for works\par
+\par
+**_"As a reader I would like"_**\par
+* view all products and blog posts without logging in \par
+* view the site from any device (mobile, tablet, desktop)\par
+* leave a review for products I liked\par
+* be able to register and log in/out\par
+* be able to change my password \par
+* filter products based on type/genre/rating\par
+* find products suiting my taste \par
+* search through titles\par
+* find products of a particular type e.g. sci-fi\par
+* rate products I have read\par
+* see newest titles\par
+* have a bookbag I can easily add and remove titles/subscriptions from\par
+* to be able to buy related titles\par
+* be part of the community by creating or translating new works\par
+* do all the above on an easily navigated and attractive website \par
+**_"As an author I would like to"_**\par
+\par
+### Design\par
+\par
+I wanted to style the website with a fresh, inviting colour palette. It seekd to promote easy navigation through consistent use f well recognised icons in standard locations. In partcular when hadling very large numbers of products and large blocks of text there is a need to provide suitable navigation buttons that react responsively. \par
+\par
+#### Colour Scheme\par
+\par
+![Colour Palette](UXD/colour-palette.png)\par
+\par
+| Hex Colour Code   |  RGB   | Description   | \par
+| ------------- |-------------|:-------------:| \par
+| #F0F0F0     |240, 240, 240 | cultured|\par
+| #D8FDDA    |216, 253, 218| nyanza|\par
+| #1ec32b       |30, 195, 43| dark pastel green     | \par
+| #00F       | 0, 0, 255 | blue|\par
+| #694F5D       | 105, 79, 93 | eggplant|\par
+| #OOOOOO     | 0, 0, 0 | black |\par
+\par
+\par
+\par
+\par
+#### Typography\par
+Fonts chosen were\par
+\par
+#### Icons\par
+\par
+I used [Font Awesome]({{\field{\*\fldinst{HYPERLINK https://fontawesome.com/icons?d=gallery }}{\fldrslt{https://fontawesome.com/icons?d=gallery\ul0\cf0}}}}\f0\fs22 ) for the icons in this project\par
+\par
+### Wireframes\par
+ \par
+[Here are the intitial wireframes](UXD)\par
+\par
+## Features\par
+\par
+**_"A user can.."_**\par
+\par
+- view titles without registration/log-in\par
+- register and set up an account \par
+- reset their password from the login page \par
+- view all titles via the navbar.\par
+- return to the homepage via th navbar\par
+- view individual titles\par
+- select the specific title type, genre, via a dropdown.\par
+- search by title, rating, author, genre\par
+- review/leave a star rating for a title \par
+- see the average star rating for a specific product in the detail page \par
+- approve comments and reviews and edit blog posts if they are the admin superuser\par
+- offer work for epub, translation, perform translation\par
+- pay for products through Stripe (as this is a fictional site, it only processes test card payments.)\par
+- use pagination to move through the purchased publications\par
+- manage my purchases, subscriptions, payments\par
+- \par
+### Comments on coding required\par
+\tab found scrolling was not working \par
+### Features left to implement\par
+\par
+*\par
+*\par
+*\par
+\par
+## Technologies Used ? see previous readme MS3\par
+#### Frameworks\par
+\par
+* [Bootstrap]({{\field{\*\fldinst{HYPERLINK https://getbootstrap.com/ }}{\fldrslt{https://getbootstrap.com/\ul0\cf0}}}}\f0\fs22 ) - \par
+Bootstrap is a conventient a great framework and easy to use.\par
+\par
+* [JQuery]({{\field{\*\fldinst{HYPERLINK https://jquery.com/ }}{\fldrslt{https://jquery.com/\ul0\cf0}}}}\f0\fs22 ) - \par
+The project uses JQuery to simplify DOM manipulation.\par
+\par
+* [Django]({{\field{\*\fldinst{HYPERLINK https://www.djangoproject.com/ }}{\fldrslt{https://www.djangoproject.com/\ul0\cf0}}}}\f0\fs22 ) - \par
+Django is a free and open-source web framework that I've used to render the back-end Python with the front-end Bootstrap.\par
+\par
+* [Intelij]()- this was the IDE used for this project\par
+* [Github]({{\field{\*\fldinst{HYPERLINK https://github.com/ }}{\fldrslt{https://github.com/\ul0\cf0}}}}\f0\fs22 ) - Github was used as remote storage and with Git for version control\par
+* [FontAwesome]({{\field{\*\fldinst{HYPERLINK https://fontawesome.com/ }}{\fldrslt{https://fontawesome.com/\ul0\cf0}}}}\f0\fs22 ) - Font Awesome provides a convenient library of icons. I used this library for any icons.\par
+* [Google Fonts]({{\field{\*\fldinst{HYPERLINK https://fonts.google.com/ }}{\fldrslt{https://fonts.google.com/\ul0\cf0}}}}\f0\fs22 ) - There is a great selection of fonts in the Google Fonts library, some of which I used in my project.\par
+\par
+### Frontend Technologies\par
+\par
+* [HTML5]({{\field{\*\fldinst{HYPERLINK https://en.wikipedia.org/wiki/HTML }}{\fldrslt{https://en.wikipedia.org/wiki/HTML\ul0\cf0}}}}\f0\fs22 ) - HTML was used to control the layout and the structure of the project.\par
+* [CSS3]({{\field{\*\fldinst{HYPERLINK https://en.wikipedia.org/wiki/Cascading_Style_Sheets }}{\fldrslt{https://en.wikipedia.org/wiki/Cascading_Style_Sheets\ul0\cf0}}}}\f0\fs22 ) - Cascading Style Sheets are used to describe the appearance of a website and I used it to make my website look appealing to the user.\par
+* [JavaScript]({{\field{\*\fldinst{HYPERLINK https://www.javascript.com/ }}{\fldrslt{https://www.javascript.com/\ul0\cf0}}}}\f0\fs22 ) - Javascript was used to introduce the interactive elements to the project.\par
+* [JQuery]({{\field{\*\fldinst{HYPERLINK https://jquery.com/ }}{\fldrslt{https://jquery.com/\ul0\cf0}}}}\f0\fs22 ) - jQuery is the primary JavaScript functionality.\par
+* [Bootstrap]({{\field{\*\fldinst{HYPERLINK https://getbootstrap.com/ }}{\fldrslt{https://getbootstrap.com/\ul0\cf0}}}}\f0\fs22 ) - This is the front-end framework for convenient layout and design.\par
+\par
+### Backend Technologies\par
+\par
+* [Python]( {{\field{\*\fldinst{HYPERLINK https://www.python.org/ }}{\fldrslt{https://www.python.org/\ul0\cf0}}}}\f0\fs22 ) - This is the highly flexible back-end programming language making use of a range of pre-existing modules\par
+* [Heroku]( {{\field{\*\fldinst{HYPERLINK https://heroku.com/ }}{\fldrslt{https://heroku.com/\ul0\cf0}}}}\f0\fs22 ) - The deployed app is hosted on Heroku a...\par
+* [Django]({{\field{\*\fldinst{HYPERLINK https://www.djangoproject.com/ }}{\fldrslt{https://www.djangoproject.com/\ul0\cf0}}}}\f0\fs22 ) - Django is a Python web framework offering speed and convenience in project development \par
+* [Postgres]({{\field{\*\fldinst{HYPERLINK https://www.postgresql.org/ }}{\fldrslt{https://www.postgresql.org/\ul0\cf0}}}}\f0\fs22 ) - Heroku Postgres is the data store used to store the data (based on PostgreSQL).\par
+* \par
+Further details on all Python packages used on this project can be found in the [requirements.txt](requirements.txt) file. \par
+\par
+### Other Technologies\par
+\par
+* [Stripe]({{\field{\*\fldinst{HYPERLINK https://stripe.com/ie }}{\fldrslt{https://stripe.com/ie\ul0\cf0}}}}\f0\fs22 ) - Stripe allows the user to make secure payments.\par
+\par
+### Other resources\par
+\par
+[Gifox]({{\field{\*\fldinst{HYPERLINK https://gifox.io/ }}{\fldrslt{https://gifox.io/\ul0\cf0}}}}\f0\fs22 ) - I used Gifox to record the website demo for my README file. I recorded it off the website [Am I Responsive](ect%2F#){\fs24\lang1036{\field{\*\fldinst{HYPERLINK http://ami.responsivedesign.is/?url=https }}{\fldrslt{http://ami.responsivedesign.is/?url=https\ul0\cf0}}}}\f0\fs24\lang1036 ]\fs22\lang12\par
+\par
+\par
+## Testing\par
+###User story testing  \par
+ - a user can enter site without registration\par
+- can search for a title by genre, rating, price or deal (inc free)\par
+- or can search for a specific product by name, author\par
+- can see product details and can select to view free content\par
+- user is presented with clear information on how to purchase product\par
+\tab - need to login/register \par
+\tab - how to purchase bookCoins\par
+\tab - how to add chapters to bookBag\par
+- user can register\par
+\tab - receive email  to confirm\par
+\tab - can confirm registration\par
+\tab - \par
+can login\par
+\tab - can access profile\par
+\tab - becomes authorised to see additional chapters\par
+\tab - can purchase bookCoins and paid for chapters\par
+-  can request password reset\par
+\tab - can reset password\par
+\tab\par
+\tab\par
+\tab\tab\par
+### Admin user testing\par
+- user can login as a superuser\par
+- a superuser can add a title\par
+\tab - form responds to invalid input with an alert\par
+\tab - entry can be cancelled\par
+\tab -  can see valid input updates to title records\par
+- can a user modify a title\par
+\tab - request returns correct title\par
+\tab - form responds to invalid input with an alert\par
+\tab - entry can be cancelled\par
+\tab -  can see valid input updates to title records\par
+- can a user delete a title\par
+\par
+### Validators\par
+\par
+#### HTML\par
+\par
+[W3C Markup Validation Service]( {{\field{\*\fldinst{HYPERLINK https://validator.w3.org/ }}{\fldrslt{https://validator.w3.org/\ul0\cf0}}}}\f0\fs22 )\par
+\par
+\par
+\par
+#### CSS\par
+\par
+[W3C CSS Validation Service]({{\field{\*\fldinst{HYPERLINK https://jigsaw.w3.org/css-validator/ }}{\fldrslt{https://jigsaw.w3.org/css-validator/\ul0\cf0}}}}\f0\fs22 )\par
+\par
+#### JavaScript\par
+\par
+[JSHint]( {{\field{\*\fldinst{HYPERLINK https://jshint.com/ }}{\fldrslt{https://jshint.com/\ul0\cf0}}}}\f0\fs22 )\par
+\par
+#### Python\par
+\par
+[PEP8]( {{\field{\*\fldinst{HYPERLINK http://pep8online.com/ }}{\fldrslt{http://pep8online.com/\ul0\cf0}}}}\f0\fs22 )\par
+\par
+## Credits \par
+\par
+### Media\par
+\par
+The \par
+\par
+Inspiration for the bookWorm logo came from font choices at [Favicon.io]({{\field{\*\fldinst{HYPERLINK https://favicon.io/ }}{\fldrslt{https://favicon.io/\ul0\cf0}}}}\f0\fs22 )\par
+I found the book dataset with images and ratings at [kaggle.com]() these were manually filtered to exclude some categories, the csv file was then formatted to JSON using  a snippet found (here](); the [gothic novel]() dataset was manually formatted to...\par
+Various eNovel sites were consulted for inspiration including:\par
+\par
+The base image is from [Pexels]()\par
+\par
+### Code\par
+*Product page pagination uses the code for page view pagination from\par
+{{\field{\*\fldinst{HYPERLINK https://docs.djangoproject.com/en/3.1/topics/pagination/ }}{\fldrslt{https://docs.djangoproject.com/en/3.1/topics/pagination/\ul0\cf0}}}}\f0\fs22\par
+* When I was starting on the pagination, this video had some really comprehensive help: \par
+    - {{\field{\*\fldinst{HYPERLINK https://www.youtube.com/watch?v=Z8MDdDyB_6A }}{\fldrslt{https://www.youtube.com/watch?v=Z8MDdDyB_6A\ul0\cf0}}}}\f0\fs22  \par
+\par
+I also received tips on snippets of my code through [Stack Overflow]({{\field{\*\fldinst{HYPERLINK https://stackoverflow.com/ }}{\fldrslt{https://stackoverflow.com/\ul0\cf0}}}}\f0\fs22 ), [CodePen]( {{\field{\*\fldinst{HYPERLINK https://codepen.io/ }}{\fldrslt{https://codepen.io/\ul0\cf0}}}}\f0\fs22 ) and [W3Schools]({{\field{\*\fldinst{HYPERLINK https://www.w3schools.com/ }}{\fldrslt{https://www.w3schools.com/\ul0\cf0}}}}\f0\fs22 ).\par
+\par
+### Acknowledgements\par
+}
+ 

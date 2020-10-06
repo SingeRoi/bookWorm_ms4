@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'profile/css/profile.css' %}">
+{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="overlay"></div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <hr>
+            <h2 class="logo-font mb-4">Hello, {{ profile.user }}</h2>
+            <hr>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <h5>Your Bookcoins: {{ profile.bookcoins }}</h5>
+        </div>
+        <div class="col-12 col-lg-6">
+            <button class="btn btn-black rounded-5 btn-profile text-uppercase float-right" onclick="location.href='{% url 'topup_coins' %}'">Top up bookcoins</button>
+        </div>
+
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <p class="text-muted">Order Coin History</p>
+            <div class="order-history table-responsive">
+                <table class="table table-sm table-borderless">
+                    <thead>
+                    <tr>
+                        <th>Order Number</th>
+                        <th>Date</th>
+                        <th>Coins</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <td>
+                            <a class="font-crayola" href="{% url 'order_history' order.order_number %}"
+                               title="{{ order.order_number }}">
+                                {{ order.order_number|truncatechars:6 }}
+                            </a>
+                        </td>
+                        <td>{{ order.date }}</td>
+                        <td>
+                            <ul class="list-unstyled">
+                                <li class="small">
+                                   {{ order.coins}}
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <p class="text-muted">Default billing address</p>
+            <div>
+                <p>Phone number: {{ profile.default_phone_number }}</p>
+                <p>Address 1: {{ profile.default_street_address1 }}</p>
+                <p>Address 2:{{ profile.default_street_address2 }}</p>
+                <p>City: {{ profile.default_town_or_city }}</p>
+                <p>Postcode: {{ profile.default_postcode }}</p>
+                <p>Country: {{ profile.default_country }}</p>
+                <button class="btn btn-black btn-profile rounded-5  text-uppercase float-right" onclick="location.href='{% url 'update_billing' %}'">Update Billing Address</button>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-24 col-lg-12">
+            <p class="text-muted">Your Bookshelf</p>
+            <div class="order-history table-responsive">
+                <table class="table table-sm table-borderless">
+                    <tbody>
+                    {% for corder in chapterOrders %}
+                    <tr>
+                        {% for item in corder.lineitems.all %}
+                        <a id="{{item.book}}+img" href="{{ item.chapter.book.image_url }}" target="_blank">
+                            <img width="100" height="200" src="{{ item.chapter.book.image_url }}" alt="{{ item.chapter.book.name }}">
+                        </a>
+                        <a id={{ item.book }} class="font-crayola" href="{% url 'product_detail' item.chapter.book.id  %}"
+                        <td >{{ item.book }}</td>
+                        </a>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

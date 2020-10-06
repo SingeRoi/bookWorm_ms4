@@ -1,0 +1,98 @@
+[
+  {
+    "pk": 1,
+    "model": "products.category",
+    "fields": {
+      "name": "Crime-Thriller",
+      "friendly_name": "Crime Thriller"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "products.category",
+    "fields": {
+      "name": "Entertainment",
+      "friendly_name": "Entertainment"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "products.category",
+    "fields": {
+      "name": "Graphic-Novels-Anime-Manga",
+      "friendly_name": "Graphic Novels Anime Manga"
+    }
+  },
+  {
+    "pk": 4,
+    "model": "products.category",
+    "fields": {
+      "name": "History-Archaeology",
+      "friendly_name": "History Archaeology"
+    }
+  },
+  {
+    "pk": 5,
+    "model": "products.category",
+    "fields": {
+      "name": "Humour",
+      "friendly_name": "Humour"
+    }
+  },
+  {
+    "pk": 6,
+    "model": "products.category",
+    "fields": {
+      "name": "Poetry-Drama",
+      "friendly_name": "Poetry Drama"
+    }
+  },
+  {
+    "pk": 7,
+    "model": "products.category",
+    "fields": {
+      "name": "Romance",
+      "friendly_name": "Romance"
+    }
+  },
+  {
+    "pk": 8,
+    "model": "products.category",
+    "fields": {
+      "name": "Teen-Young-Adult",
+      "friendly_name": "Teen Young Adult"
+    }
+  },
+  {
+    "pk": 9,
+    "model": "products.category",
+    "fields": {
+      "name": "Science-Fiction-Fantasy-Horror",
+      "friendly_name": "Science Fiction Fantasy Horror"
+    }
+  },
+  {
+    "pk": 10,
+    "model": "products.category",
+    "fields": {
+      "name": "Gothic",
+      "friendly_name": "Gothic"
+    }
+  },
+  {
+    "pk": 11,
+    "model": "products.category",
+    "fields": {
+      "name": "new_arrivals",
+      "friendly_name": "New Arrivals"
+    }
+  },
+  {
+    "pk": 12,
+    "model": "products.category",
+    "fields": {
+      "name": "deals",
+      "friendly_name": "Deals"
+    }
+  }
+]

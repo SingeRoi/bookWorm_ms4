@@ -1,0 +1,342 @@
+/* set html to allow h-100 elements + centering to work*/
+html {
+    height: 100%;
+}
+/* options to ensure background_image covers page and remains centered */
+body {
+    background: url('https://images.pexels.com/photos/4865739/pexels-photo-4865739.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    height: calc(100vh - 164px);
+    color: #555;
+    font-family: 'lato';
+}
+
+/* from Bulma ensures centring of fa-icons */
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.logo-font {
+    text-transform: uppercase;
+}
+
+.font-tea {
+    color: #D8FDDA;
+}
+
+.font-banner {
+    color: #D8FDDA;
+    font-size: 18px;
+}
+
+/* logo only takes up as much space as text needs */
+.main-logo-link {
+    width: fit-content;
+}
+
+.read-now-button {
+    background: #00F;
+    color: white;
+    min-width: 260px;
+}
+
+.btn-black {
+    background: black;
+    color: white;
+}
+
+.read-now-button:hover,
+.read-now-button:active,
+.read-now-button:focus {
+    background: #110DD3;
+    color: white;
+}
+
+.shop-now-button:hover,
+.shop-now-button:active,
+.shop-now-button:focus,
+.btn-black:hover,
+.btn-black:active,
+.btn-black:focus {
+    background: #222;
+    color: white;
+}
+
+.navbar-toggler-btn {
+    border: none;
+    padding-top: 0;
+}
+
+.text-worm {
+    font-family: 'Leckerli One', cursive;
+    color: #00F !important;
+    font-size: 2.5em;
+}
+
+.text-black {
+    color: #000 !important;
+}
+
+.bg-pl-blue {
+    background-color: #D8FDDA!important;
+}
+
+.border-black {
+    border: 1px solid black !important;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0%;
+    position: fixed;
+    background: rgba(30, 195, 43, 0.9);
+    z-index: -1;
+}
+
+.text-muted {
+    color: #694F5D !important;
+}
+
+/* styling for product page*/
+.product-category-sort-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    align-items: center;
+}
+
+#sort-selector {
+    margin-top: 1.6em;
+}
+
+.search-result-col {
+    padding: 0;
+}
+
+.search-result-p {
+    margin-bottom: 0;
+}
+
+.col-category-badge {
+    left: 3.7%;
+}
+
+.btn-info {
+    background-color: transparent;
+}
+
+/* Styling for product detail*/
+.chapter-badges {
+    margin-left: 15px;
+}
+
+.badge {
+    width-min: 120%;
+}
+
+.badge-blue {
+    color: #00f !important;
+    border-color: #00f !important;
+}
+
+.badge-blue:hover {
+    color: #D8FDDA !important;
+    background-color: #00f !important;
+    border-color: #00f !important;
+}
+
+.badge-white:hover {
+    background-color: #c1be12 !important;
+    border-color: #c1be12 !important;
+}
+
+.text-blue {
+    color: #00f !important;
+}
+
+/* star ratings display simplified from method 5 from https://stackoverflow.com/questions/39838547/star-shaped-progress-bars-in-css-html-javascript*/
+
+#inner {
+  position: relative;
+  left: 3rem;
+  right: 0;
+  top: -1.2rem;
+  width: var(--width); /* 1rem is 1 star */
+  height: 1rem;
+  bottom: 0;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/2e/Star.png');
+  background-repeat: repeat;
+  z-index: 0;
+}
+
+/* styles user-rating selector input modified from https://mdbootstrap.com/snippets/jquery/bartek-malanowski/451394#css-tab-view */
+
+.rate-popover {
+    cursor: pointer;
+    font-size: .75rem !important;
+}
+
+.amber-text {
+    color: # ;
+}
+
+.fixed-amber-text {
+    color: #f7e095;
+}
+
+.popover-inner {
+    display: flex;
+}
+
+.popover {
+    display: none;
+}
+
+
+/*Chapter display styling*/
+.chapter-text-bg {
+    background-color: #f0f0f0;
+}
+
+.book-title-chapter-h1 {
+    color: #00f;
+}
+
+/* Styling for profile page*/
+.btn-profile {
+    min-width: 12em;
+}
+
+/* Styling logout and other confirmations */
+.logout-message,
+.verification-message {
+    margin-top: 7em;
+    margin-right: 1em;
+    background-color: #337addee !important;
+    padding-top: 15px;
+    border-radius: 5px;
+    top: 50px;
+    right: auto;
+}
+
+.message-container {
+    position: fixed;
+}
+
+/* colours email confirm text*/
+.font-eggplant {
+    color: #694F5D !important;
+}
+
+/* colours various text*/
+.font-crayola {
+    color: #FFE785 !important;
+}
+
+.btn-logout {
+    margin-bottom: 1em;
+    border-radius: 5px;
+}
+
+.message-container,
+.allauth-container {
+    position: relative;
+    margin-top: 7em;
+    right: 15px;
+    left: 15px;
+    z-index: 1200;
+    color: #D8FDDA;
+}
+
+.modal-buy-btn {
+    position: relative;
+    top: 55px;
+    left: 15px;
+}
+/* -------------------------------- Media Queries */
+
+/* Slightly larger container on xl screens */
+@media (min-width: 1200px) {
+  .container,
+  .container-text {
+    max-width: 80%;
+  }
+}
+
+/* fixed top navbar only on medium and up */
+@media (min-width: 992px) {
+    .fixed-top-desktop-only {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+
+    .header-container {
+        padding-top: 164px;
+    }
+
+    .font-banner {
+    font-size: 24px;
+    }
+}
+
+
+/* pad the top a bit when navbar is collapsed on mobile */
+@media (max-width: 991px) {
+    .header-container {
+        padding-top: 76px;
+    }
+    .text-black {
+        font-size: 12px;
+    }
+    .font-tea {
+        font-size: 2.5em;
+        padding-top: 2em;
+    }
+
+    .read-now-button {
+        margin-left: 2em;
+        margin-top: 7em;
+    }
+
+    .search-result-col {
+        margin-left: 1em;
+    }
+
+    .container-product-titles {
+        display: flex;
+        flex-flow: wrap;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .product-titles,
+    .product-title-line {
+        display: none;
+    }
+
+    .product-hr {
+        display: none;
+    }
+
+    .col-category-badge {
+        left: 0;
+        padding-left: 0;
+    }
+
+    /* logout para text reduced */
+    .logout-p {
+        font-size: 1.5em;
+    }
+
+}

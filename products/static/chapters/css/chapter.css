@@ -1,0 +1,12 @@
+.chpcontext {
+    white-space: pre-wrap;
+}
+
+/*Chapter display styling*/
+.chapter-text-bg {
+    background-color: #f0f0f0;
+}
+
+.book-title-chapter-h1 {
+    color: #00f;
+}
